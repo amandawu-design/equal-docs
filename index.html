@@ -326,7 +326,9 @@ a{color:inherit;text-decoration:none}
 .assure b{display:block;font-weight:500;font-size:15px}
 .assure span:not(.as-ic){font-size:13.5px;color:var(--ink-2)}
 /* legal firewall: unique advantage */
+#firewall .lf-head{margin-inline:auto;text-align:center;justify-items:center}
 #firewall *,#service *,#use-cases *{font-family:var(--font-sans)}
+#service template{display:none}
 .lf-head{display:grid;gap:18px;margin-bottom:48px;max-width:860px}
 .lf-layers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 @media (max-width:900px){.lf-layers{grid-template-columns:1fr}}
@@ -358,52 +360,168 @@ a{color:inherit;text-decoration:none}
 .lf-th span:last-child{color:var(--primary-deep)}
 @media (max-width:760px){.lf-row{grid-template-columns:1fr 1fr;gap:6px 16px}.lf-row>:first-child{grid-column:1/-1}.lf-th>:first-child{display:none}}
 
-/* service: Mercury-style step list + snippet */
-.svc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(32px,5vw,72px);align-items:start}
-@media (max-width:960px){.svc{grid-template-columns:1fr}}
-.svc-l{display:flex;flex-direction:column;gap:18px;align-items:flex-start}
-.svc-steps{list-style:none;margin:12px 0 0;padding:0;width:100%}
+/* service: heading on top, step list beside a fast product snippet */
+.svc-head{display:grid;gap:18px;margin-bottom:48px;max-width:860px}
+.svc{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,4vw,56px);align-items:start}
+@media (max-width:960px){.svc{grid-template-columns:1fr}.svc-r{order:-1}}
+.svc-l{display:flex;flex-direction:column;align-items:flex-start}
+.svc-steps{list-style:none;margin:0;padding:0;width:100%}
 .svc-steps li{position:relative;border-top:1px solid var(--line-2)}
 .svc-steps li:last-child{border-bottom:1px solid var(--line-2)}
 .svc-steps button{display:grid;gap:6px;width:100%;text-align:left;background:none;border:0;padding:16px 0;font:inherit;color:var(--ink-2);cursor:pointer}
 .svc-steps b{font-weight:500;font-size:16px;display:flex;align-items:center;gap:10px}
 .svc-steps b::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--line-2);transition:background .3s}
-.svc-steps span{font-size:14.5px;color:var(--ink-2);max-height:0;overflow:hidden;opacity:0;transition:max-height .5s ease,opacity .5s ease;padding-left:16px}
+.svc-steps span{font-size:14.5px;color:var(--ink-2);max-height:0;overflow:hidden;opacity:0;transition:max-height .45s ease,opacity .45s ease;padding-left:16px}
 .svc-steps li.on b{color:var(--ink)}
 .svc-steps li.on b::before{background:var(--primary)}
 .svc-steps li.on span{max-height:120px;opacity:1}
 .svc-steps button:hover b{color:var(--ink)}
 .svc-bar{position:absolute;left:0;top:-1px;height:2px;width:0;background:var(--primary)}
-.svc-steps li.on .svc-bar.run{width:100%;transition:width linear var(--svc-dur,7s)}
+.svc-steps li.on .svc-bar.run{width:100%;transition:width linear var(--svc-dur,6s)}
 .svc-r{position:sticky;top:96px}
 @media (max-width:960px){.svc-r{position:static}}
-.svc-panel{position:relative;border-radius:18px;border:1px solid var(--line-2);background-color:var(--card);background-image:radial-gradient(#DDE0E6 1px,transparent 1px);background-size:16px 16px;padding:clamp(18px,4vw,48px);min-height:420px;display:grid;align-items:center}
-.svc-shot{display:none}
-.svc-shot.on{display:block;animation:shotin .5s ease}
-@keyframes shotin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.svc-shot .mock-inner{max-width:none;font-size:14px;padding:18px}
-.shot-h{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding-bottom:12px;margin-bottom:6px;border-bottom:1px solid var(--line)}
-.shot-h b{font-weight:500}
-.shot-f{margin-top:10px;font-size:12.5px;color:var(--muted)}
-.doc-ln{height:7px;border-radius:4px;background:#EEF0F3;margin:9px 0}
-.st.warn{color:var(--warn)}
-.mk .st[data-flip]{transition:color .8s ease}
-.anim .mk .st[data-flip].pend{color:var(--muted)}
+.svc-panel{border-radius:18px;border:1px solid var(--line-2);background-color:var(--card);background-image:radial-gradient(#DDE0E6 1px,transparent 1px);background-size:16px 16px;padding:clamp(14px,3vw,36px);min-height:470px;display:grid;align-items:center}
+.svc-stage{min-width:0}
 
-/* use cases */
-.uc{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media (max-width:860px){.uc{grid-template-columns:1fr}}
-.uc-card{background:var(--card);border:1px solid var(--line-2);border-radius:var(--r-card);padding:28px;display:flex;flex-direction:column;gap:12px;min-width:0}
-.uc-card>p{margin:0;color:var(--ink-2);font-size:15px;max-width:52ch}
-.uc-chips{display:flex;gap:6px;flex-wrap:wrap}
-.uc-card .ticks{margin-top:4px}
-.uc-shot{margin-top:auto;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13px}
-.uc-r{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:10px;padding:10px 14px;border-top:1px solid var(--line)}
-.uc-r>*{min-width:0}
-.uc-hd{border-top:0;background:var(--surface);color:var(--muted);font-size:12px}
-.uc-foot{margin-top:28px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-.uc-foot p{margin:0;color:var(--ink-2)}
+/* snippet window */
+.sx-win{background:var(--card);border:1px solid var(--line-2);border-radius:14px;box-shadow:0 1px 2px rgba(24,24,34,.05),0 24px 48px -24px rgba(38,53,73,.3);overflow:hidden;font-size:13.5px;animation:sxin .4s ease}
+.sx-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--surface)}
+.sx-top b{font-weight:500}
+.sx-top .chip svg{margin-right:2px}
+.sx-body{padding:16px;display:grid;gap:10px;min-height:300px;align-content:start}
+.sx-h{display:none}
+.sx-h.in{display:revert;animation:sxin .35s ease}
+.sx-row.in,.sx-find.in,.sx-foot.in,.sx-upd.in,.sx-toast.in,.sx-cert.in,.sx-qh{display:flex}
+.sx-typing.in{display:flex}
+@keyframes sxin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.sx-btn{display:inline-flex;align-items:center;height:30px;padding:0 12px;border-radius:999px;border:1px solid var(--line-2);font-size:12.5px;color:var(--ink);background:var(--card);white-space:nowrap;transition:transform .15s,background .2s}
+.sx-btn.pr{background:var(--primary);border-color:var(--primary);color:var(--on-primary)}
+.sx-btn.press{transform:scale(.93);background:var(--primary-deep)}
+.sx-note{font-size:11.5px;color:var(--muted)}
+.sx-row{gap:8px;align-items:center;flex-wrap:wrap}
+/* ask */
+.sx-chat{min-height:280px}
+.sx-msg{padding:10px 12px;border-radius:12px;max-width:86%}
+.sx-msg.me{justify-self:end;background:var(--primary);color:var(--on-primary);border-bottom-right-radius:4px}
+.sx-msg.ai{background:var(--surface);border:1px solid var(--line);color:var(--ink-2);border-bottom-left-radius:4px}
+.sx-msg.ai b{display:block;font-weight:500;color:var(--ink);margin-bottom:4px}
+.sx-msg ul{margin:0;padding-left:18px;display:grid;gap:3px}
+.sx-typing{gap:4px;padding:11px 12px;width:max-content;border-radius:12px;background:var(--surface);border:1px solid var(--line)}
+.sx-typing i{width:5px;height:5px;border-radius:50%;background:var(--muted);animation:dot 1s ease-in-out infinite}
+.sx-typing i:nth-child(2){animation-delay:.15s}.sx-typing i:nth-child(3){animation-delay:.3s}
+.sx-input{display:flex;align-items:center;gap:10px;margin:0 16px 16px;padding:8px 8px 8px 14px;border:1px solid var(--line-2);border-radius:12px;color:var(--ink)}
+.sx-input [data-in]{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sx-ph{color:var(--muted)}
+.sx-send{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:var(--primary);color:#fff;transition:transform .15s}
+.sx-send.press{transform:scale(.88)}
+/* draft */
+.sx-draft{grid-template-columns:200px 1fr;gap:14px}
+@media (max-width:560px){.sx-draft{grid-template-columns:1fr}}
+.sx-form{display:grid;gap:8px;align-content:start}
+.sx-form label{display:grid;gap:3px;font-size:11.5px;color:var(--muted)}
+.sx-form label span{min-height:32px;padding:7px 10px;border:1px solid var(--line-2);border-radius:8px;font-size:13px;color:var(--ink)}
+.sx-form .sx-btn{justify-self:start;margin-top:4px}
+.sx-doc{border:1px solid var(--line);border-radius:10px;padding:14px;display:grid;gap:8px;align-content:start;min-width:0}
+.sx-doc-t{font-weight:500}
+.sx-doc p{margin:0;line-height:1.65;color:var(--ink-2)}
+.sx-doc .blank{transition:box-shadow .3s}
+.sx-doc .blank.pop{box-shadow:0 0 0 3px var(--primary-tint)}
+.sx-sk{display:grid;gap:8px}
+.sx-sk.in{display:grid}
+.sx-sk i{height:8px;border-radius:4px;background:linear-gradient(90deg,#EEF0F3,#E0E7FF,#EEF0F3);background-size:200% 100%;animation:shim 1s linear infinite}
+.sx-sk i:nth-child(2){width:86%}.sx-sk i:nth-child(3){width:92%}.sx-sk i:nth-child(4){width:60%}
+@keyframes shim{to{background-position:-200% 0}}
+.sx-foot{justify-content:space-between;align-items:center;gap:8px;padding-top:8px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+/* check */
+.sx-check{grid-template-columns:1.1fr 1fr;gap:14px}
+@media (max-width:560px){.sx-check{grid-template-columns:1fr}}
+.sx-paper{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:8px;align-content:start}
+.sx-paper p{margin:0;line-height:1.65;color:var(--ink-2)}
+.sx-paper .n{font-size:11px;color:var(--muted);margin-right:6px}
+.sx-paper .hl{border-radius:3px;padding:0 1px;transition:background .35s,box-shadow .35s}
+.sx-paper .hl.r{background:var(--risk-bg);box-shadow:inset 0 -2px 0 var(--risk)}
+.sx-paper .hl.w{background:var(--warn-bg);box-shadow:inset 0 -2px 0 var(--warn)}
+.sx-paper .hl.g{background:var(--ok-bg);box-shadow:inset 0 -2px 0 var(--ok)}
+.sx-scan{position:absolute;left:0;right:0;top:0;height:40px;background:linear-gradient(180deg,transparent,rgba(79,70,229,.12) 70%,rgba(79,70,229,.45) 98%,transparent);border-bottom:1px solid var(--primary);opacity:0;pointer-events:none}
+.scanning .sx-scan{opacity:1;animation:sxscan 1s ease-in-out infinite}
+@keyframes sxscan{from{transform:translateY(-40px)}to{transform:translateY(240px)}}
+.sx-side{display:grid;gap:8px;align-content:start;min-width:0}
+.sx-prog{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+.sx-bar{height:5px;border-radius:3px;background:var(--line);overflow:hidden}
+.sx-bar i{display:block;height:100%;width:0;background:var(--primary);transition:width .5s ease}
+.sx-find{gap:10px;align-items:flex-start;padding:9px 10px;border:1px solid var(--line-2);border-radius:10px}
+.sx-find b{display:block;font-weight:500;font-size:13px}
+.sx-find small,.sx-qh small,.sx-sg small,.sx-cert small,.sx-upd small{display:block;color:var(--muted);font-size:11.5px}
+.sx-sum{font-size:12px;color:var(--ink-2)}
+/* lawyer */
+.sx-list{display:grid;gap:6px}
+.sx-li{display:flex;justify-content:space-between;gap:10px;padding:8px 10px;border:1px solid var(--line);border-radius:9px;color:var(--muted);transition:color .3s,border-color .3s}
+.sx-ck{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:10px;border:1.5px solid var(--line-2);color:transparent;transition:all .3s;flex:0 0 auto}
+.sx-li.on{color:var(--ink);border-color:var(--line-2)}
+.sx-li.on .sx-ck,.sx-cert .sx-ck{border-color:var(--ok);background:var(--ok-bg);color:var(--ok)}
+.sx-stat{font-size:12px;color:var(--muted)}
+.sx-quote{border:1px solid var(--primary-tint);background:var(--primary-subtle);border-radius:12px;padding:12px;display:none;gap:8px}
+.sx-quote.in{display:grid}
+.sx-quote.dim{opacity:.55;transition:opacity .4s}
+.sx-qh{align-items:center;gap:10px}
+.sx-qh b{font-weight:500}
+.sx-qh .chip{margin-left:auto}
+.sx-av{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:#fff;font-size:11px;font-weight:600;flex:0 0 auto}
+.sx-quote p{margin:0;color:var(--ink-2)}
+.sx-done{color:var(--ok);font-weight:500;font-size:13px}
+/* sign */
+.sx-sg{display:grid;grid-template-columns:auto 1fr 130px;align-items:center;gap:12px;padding:9px 10px;border:1px solid var(--line);border-radius:10px;transition:border-color .3s}
+.sx-sg .av{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:600;background:var(--primary-subtle);color:var(--primary-deep)}
+.sx-sg b{font-weight:500}
+.sx-sg.ok{border-color:var(--ok-line)}
+.sx-sg.ok small{color:var(--ok)}
+.sx-sig{width:120px;height:30px}
+.sx-sig path{fill:none;stroke:var(--navy);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:260;stroke-dashoffset:260;transition:stroke-dashoffset .7s ease}
+.sx-sg.draw .sx-sig path{stroke-dashoffset:0}
+@media (max-width:480px){.sx-sg{grid-template-columns:auto 1fr}.sx-sig{display:none}}
+.sx-cert{gap:10px;align-items:center;padding:10px;border-radius:10px;background:var(--ok-bg);border:1px solid var(--ok-line)}
+.sx-cert b{font-weight:500}
+/* stay checked */
+.sx-upd{gap:10px;align-items:center;padding:10px 12px;border-radius:10px;background:var(--primary-subtle);border:1px solid var(--primary-tint)}
+.sx-upd b{font-weight:500;color:var(--primary-deep)}
+.sx-pulse{width:9px;height:9px;border-radius:50%;background:var(--primary);box-shadow:0 0 0 0 rgba(79,70,229,.5);animation:pulse 1.2s ease-out infinite;flex:0 0 auto}
+@keyframes pulse{to{box-shadow:0 0 0 10px rgba(79,70,229,0)}}
+.sx-rc{display:grid;grid-template-columns:auto minmax(0,1fr) 70px 120px;gap:10px;align-items:center;padding:8px 10px;border:1px solid var(--line);border-radius:9px}
+.sx-rc .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sx-mini{height:5px;border-radius:3px;background:var(--line);overflow:hidden}
+.sx-mini i{display:block;height:100%;width:0;background:var(--primary);transition:width .8s ease}
+.sx-res{font-size:12px;text-align:right;white-space:nowrap}
+.sx-res.ok{color:var(--ok)}.sx-res.w{color:var(--warn);font-weight:500}
+@media (max-width:480px){.sx-rc{grid-template-columns:auto minmax(0,1fr) auto}.sx-mini{display:none}}
+.sx-toast{justify-content:space-between;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;background:var(--navy);color:#fff}
+.sx-toast .sx-btn.pr{background:#fff;color:var(--navy);border-color:#fff}
 
+/* use cases: Mercury-style carousel */
+.lf-c{margin-inline:auto;text-align:center;justify-items:center}
+.ucx-track{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:2/1;background:var(--navy)}
+@media (max-width:760px){.ucx-track{aspect-ratio:auto;min-height:560px}}
+.ucx-slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;pointer-events:none}
+.ucx-slide.on{opacity:1;pointer-events:auto}
+.ucx-bg{position:absolute;inset:0}
+.ucx-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,22,34,.88) 0%,rgba(18,22,34,.55) 45%,rgba(18,22,34,.1) 100%)}
+@media (max-width:760px){.ucx-bg::after{background:linear-gradient(0deg,rgba(18,22,34,.92) 30%,rgba(18,22,34,.35) 100%)}}
+.ucx-bg.b1{background:radial-gradient(60% 80% at 80% 30%,#5A6B86,transparent 70%),linear-gradient(135deg,#2E3D55,#1B2333)}
+.ucx-bg.b2{background:radial-gradient(60% 80% at 78% 35%,#5B57B8,transparent 70%),linear-gradient(135deg,#263549,#1A1F33)}
+.ucx-bg.b3{background:radial-gradient(60% 80% at 80% 30%,#4A6A7E,transparent 70%),linear-gradient(135deg,#22324A,#151B29)}
+.ucx-ph{position:absolute;right:6%;top:50%;transform:translateY(-50%);z-index:1;max-width:240px;text-align:center;padding:10px 14px;border:1px dashed rgba(252,211,77,.7);border-radius:10px;color:#FCD34D;font-size:12px;background:rgba(0,0,0,.2)}
+@media (max-width:760px){.ucx-ph{top:20%;left:50%;right:auto;transform:translateX(-50%)}}
+.ucx-tag{position:absolute;top:clamp(18px,3vw,32px);left:clamp(18px,3.5vw,40px);z-index:2;padding:6px 12px;border-radius:8px;background:rgba(14,16,26,.78);color:#fff;font-size:14px}
+.ucx-copy{position:absolute;left:clamp(18px,3.5vw,40px);bottom:clamp(20px,4vw,48px);right:clamp(18px,3.5vw,40px);z-index:2;max-width:560px;color:#fff;display:grid;gap:4px}
+.ucx-q{margin:0 0 18px;font-size:clamp(18px,2.1vw,26px);line-height:1.35;letter-spacing:-.01em;text-wrap:pretty}
+.ucx-copy b{font-weight:500;font-size:clamp(15px,1.4vw,18px)}
+.ucx-copy span{color:rgba(255,255,255,.72);font-size:clamp(13px,1.2vw,16px)}
+.ucx-dots{display:flex;justify-content:center;gap:10px;margin-top:22px}
+.ucx-dots button{width:min(130px,26vw);height:18px;padding:7px 0;border:0;background:none;cursor:pointer}
+.ucx-dots i{display:block;height:4px;border-radius:3px;background:var(--line-2);position:relative;overflow:hidden}
+.ucx-dots i::after{content:"";position:absolute;inset:0;width:0;background:var(--ink);border-radius:3px}
+.ucx-dots button[aria-selected="true"] i::after{width:100%}
+.ucx-dots button.run i::after{width:0;animation:ucfill var(--uc-dur,7s) linear forwards}
+@keyframes ucfill{to{width:100%}}
 /* bento */
 /* feature mockups: slow, one-time play when fully in view (only with JS + motion allowed) */
 .mk [data-s]{transition:opacity .9s ease,transform .9s ease,background-color .9s ease,color .9s ease}
@@ -782,118 +900,173 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
 <!-- SERVICE (end-to-end, Mercury-style) -->
 <section class="band alt" id="service">
   <div class="wrap"><div class="in sec">
+    <div class="svc-head">
+      <h2 class="h2">From first question to signed contract. <span class="dim">In one place.</span></h2>
+      <p class="lede">Legal Firewall sits at the centre of an end-to-end service. AI handles routine work, and licensed lawyers step in when professional judgment is required.</p>
+    </div>
     <div class="svc">
       <div class="svc-l">
-        <h2 class="h2">From first question to signed contract. <span class="dim">In one place.</span></h2>
-        <p class="lede">Legal Firewall sits at the centre of an end-to-end service. AI handles routine work, and licensed lawyers step in when professional judgment is required.</p>
         <ol class="svc-steps" id="svcSteps">
-          <li class="on"><button type="button" aria-controls="sv0" aria-expanded="true"><b>Ask</b><span>Ask in plain language and get a structured answer, with no account needed to try.</span></button><i class="svc-bar"></i></li>
-          <li><button type="button" aria-controls="sv1" aria-expanded="false"><b>Draft</b><span>Describe what you need. EqualDocs writes the document from your facts and leaves clear blanks for anything still missing.</span></button><i class="svc-bar"></i></li>
-          <li><button type="button" aria-controls="sv2" aria-expanded="false"><b>Check with Legal Firewall</b><span>Each document is checked against the Legal Pack for its type and jurisdiction, with findings beside the text.</span></button><i class="svc-bar"></i></li>
-          <li><button type="button" aria-controls="sv3" aria-expanded="false"><b>Bring in a lawyer</b><span>When it needs professional judgment, a licensed lawyer quotes in writing before any work starts. Nothing is billed until you approve.</span></button><i class="svc-bar"></i></li>
-          <li><button type="button" aria-controls="sv4" aria-expanded="false"><b>Sign</b><span>Send for e-signature, see who has signed, and keep the signed PDF with its completion certificate.</span></button><i class="svc-bar"></i></li>
-          <li><button type="button" aria-controls="sv5" aria-expanded="false"><b>Stay checked</b><span>Documents are checked again when a Legal Pack is updated, so a contract signed last year is not left behind.</span></button><i class="svc-bar"></i></li>
+          <li class="on"><button type="button" aria-expanded="true"><b>Ask</b><span>Ask in plain language and get a structured answer, with no account needed to try.</span></button><i class="svc-bar"></i></li>
+          <li><button type="button" aria-expanded="false"><b>Draft</b><span>Describe what you need. EqualDocs writes the document from your facts and leaves clear blanks for anything still missing.</span></button><i class="svc-bar"></i></li>
+          <li><button type="button" aria-expanded="false"><b>Check with Legal Firewall</b><span>Each document is checked against the Legal Pack for its type and jurisdiction, with findings beside the text.</span></button><i class="svc-bar"></i></li>
+          <li><button type="button" aria-expanded="false"><b>Bring in a lawyer</b><span>When it needs professional judgment, a licensed lawyer quotes in writing before any work starts. Nothing is billed until you approve.</span></button><i class="svc-bar"></i></li>
+          <li><button type="button" aria-expanded="false"><b>Sign</b><span>Send for e-signature, see who has signed, and keep the signed PDF with its completion certificate.</span></button><i class="svc-bar"></i></li>
+          <li><button type="button" aria-expanded="false"><b>Stay checked</b><span>Documents are checked again when a Legal Pack is updated, so a contract signed last year is not left behind.</span></button><i class="svc-bar"></i></li>
         </ol>
         <a class="btn btn-primary" href="#ask" style="margin-top:28px">Free trial</a>
       </div>
+      <div class="svc-r"><div class="svc-panel" aria-hidden="true"><div class="svc-stage" id="svcStage"></div></div></div>
+    </div>
 
-      <div class="svc-r">
-        <div class="svc-panel">
-          <div class="svc-shot on" id="sv0"><div class="mock-inner mk" data-anim="ask">
-            <div class="shot-h"><b>Ask</b><span class="chip">Private session</span></div>
-            <div class="bubble me" data-s>Can my employer change my contract mid-year?</div>
-            <div class="ans"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="bubble ai" data-s>It depends on consent and your jurisdiction. Here is what to check first: the change clause, notice periods, and whether you agreed in writing.</div></div>
-            <span class="link" data-s style="display:inline-block;margin-top:8px;font-size:13px">Match me with a lawyer →</span>
-          </div></div>
+    <template data-svc>
+      <div class="sx-win">
+        <div class="sx-top"><b>Ask</b><span class="chip"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="10" height="7" rx="1.6"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg>Private session</span></div>
+        <div class="sx-body sx-chat">
+          <div class="sx-msg me sx-h" data-q></div>
+          <div class="sx-typing sx-h" data-ty><i></i><i></i><i></i></div>
+          <div class="sx-msg ai sx-h" data-a>
+            <b data-a1></b>
+            <ul><li class="sx-h">The change clause in your contract</li><li class="sx-h">Any notice period it requires</li><li class="sx-h">Whether you agreed to the change in writing</li></ul>
+          </div>
+          <div class="sx-row sx-h" data-cta><span class="sx-btn pr">Match me with a lawyer</span><span class="sx-note">General information, not legal advice.</span></div>
+        </div>
+        <div class="sx-input"><span class="sx-ph" data-in>Ask a legal question…</span><span class="sx-send" data-send>↑</span></div>
+      </div>
+    </template>
 
-          <div class="svc-shot" id="sv1"><div class="mock-inner mk" data-anim="draft">
-            <div class="shot-h"><b>Mutual Non-Disclosure Agreement</b><span class="chip">Draft</span></div>
-            <p class="doc-p" data-s>This Agreement is made on <span class="blank" data-s>[effective date]</span> between <span class="blank" data-s>[Company A]</span> and Northwind Labs Inc. Confidential Information will be protected for <span class="blank" data-s>[term]</span> years from the date of disclosure.</p>
-            <div class="doc-ln"></div><div class="doc-ln" style="width:84%"></div><div class="doc-ln" style="width:66%"></div>
-          </div></div>
-
-          <div class="svc-shot" id="sv2"><div class="mock-inner mk" data-anim="review">
-            <div class="shot-h"><b>Contractor_Agreement.docx</b><span class="chip indigo">Legal Pack · Contractor · Québec</span></div>
-            <div class="risk-row" data-s><span>4.1 Exclusivity</span><span class="sev h" data-s>High</span></div>
-            <div class="risk-row" data-s><span>6.2 Payment terms</span><span class="sev m" data-s>Medium</span></div>
-            <div class="risk-row" data-s><span>9.0 Governing law</span><span class="sev l" data-s>Passed</span></div>
-            <div class="shot-f">Checked: 3 rules in this Legal Pack · Not checked: anything outside it</div>
-          </div></div>
-
-          <div class="svc-shot" id="sv3"><div class="mock-inner mk" data-anim="flip">
-            <div class="shot-h"><b>Review package</b><span class="chip">Contractor_Agreement.docx + 2 findings</span></div>
-            <div class="risk-row"><span>Sent to EqualDocs Counsel</span><span class="st" data-flip data-from="Sending…" data-to="✓ Sent">✓ Sent</span></div>
-            <div class="risk-row"><span>Written quote</span><span class="st" data-flip data-from="Waiting" data-to="✓ Received">✓ Received</span></div>
-            <div class="risk-row"><span>Your approval</span><span class="st" data-flip data-from="Waiting" data-to="✓ Approved">✓ Approved</span></div>
-            <div class="shot-f">Nothing is billed until you approve.</div>
-          </div></div>
-
-          <div class="svc-shot" id="sv4"><div class="mock-inner mk" data-anim="sign">
-            <div class="shot-h"><b>Contractor_Agreement.pdf</b><span class="chip">E-signature</span></div>
-            <div class="signer"><span class="av">ML</span><span class="n">Maya Lin</span><span class="st ok" data-sig>✓ Signed</span></div>
-            <div class="signer"><span class="av">JD</span><span class="n">Jan Dolski</span><span class="st ok" data-sig>✓ Signed</span></div>
-            <div class="signer"><span class="av">PR</span><span class="n">Priya Raghavan</span><span class="st wait">Waiting</span></div>
-            <div class="risk-row" style="border-top:1px solid var(--line);margin-top:4px"><span>Signed PDF + completion certificate</span><span class="st" data-count>2 of 3</span></div>
-          </div></div>
-
-          <div class="svc-shot" id="sv5"><div class="mock-inner mk" data-anim="flip">
-            <div class="shot-h"><b>Legal Pack updated</b><span class="chip indigo">Contractor · Québec</span></div>
-            <div class="risk-row"><span>Contractor_Agreement.docx</span><span class="st" data-flip data-from="Checking…" data-to="✓ No new findings">✓ No new findings</span></div>
-            <div class="risk-row"><span>Contractor_A_Moreau.docx</span><span class="st warn" data-flip data-from="Checking…" data-to="1 new finding">1 new finding</span></div>
-            <div class="risk-row"><span>Contractor_L_Chen.docx</span><span class="st" data-flip data-from="Checking…" data-to="✓ No new findings">✓ No new findings</span></div>
-            <div class="shot-f">Monitoring that starts from business changes, like a new hire, is in development.</div>
-          </div></div>
+    <template data-svc>
+      <div class="sx-win">
+        <div class="sx-top"><b>Draft</b><span class="chip">Mutual NDA</span></div>
+        <div class="sx-body sx-draft">
+          <div class="sx-form">
+            <label>Agreement<span data-f0></span></label>
+            <label>Parties<span data-f1></span></label>
+            <label>Purpose<span data-f2></span></label>
+            <span class="sx-btn pr" data-gen>Draft document</span>
+          </div>
+          <div class="sx-doc">
+            <div class="sx-sk sx-h" data-sk><i></i><i></i><i></i><i></i></div>
+            <div class="sx-doc-t sx-h" data-t>Mutual Non-Disclosure Agreement</div>
+            <p class="sx-h" data-p1>This Agreement is made on <span class="blank">[effective date]</span> between Northwind Labs Inc. and <span class="blank">[Company A]</span>.</p>
+            <p class="sx-h" data-p2>Each party will protect the other's Confidential Information for <span class="blank">[term]</span> years from the date of disclosure.</p>
+            <div class="sx-foot sx-h" data-ft><span class="sev m">3 blanks to fill</span><span>Ready to review</span></div>
+          </div>
         </div>
       </div>
-    </div>
+    </template>
+
+    <template data-svc>
+      <div class="sx-win">
+        <div class="sx-top"><b>Contractor_Agreement.docx</b><span class="chip indigo">Legal Pack · Contractor · Québec</span></div>
+        <div class="sx-body sx-check">
+          <div class="sx-paper" data-paper><div class="sx-scan"></div>
+            <p data-c0><span class="n">4.1</span>The Contractor shall work <span class="hl">exclusively for the Company</span> during the Term.</p>
+            <p data-c1><span class="n">6.2</span>Invoices are payable within <span class="hl">ninety (90) days</span> of receipt.</p>
+            <p data-c2><span class="n">9.0</span>This Agreement is governed by <span class="hl">the laws of Québec</span>.</p>
+          </div>
+          <div class="sx-side">
+            <div class="sx-prog"><span>Checking rules</span><span data-pc>0 / 3</span></div>
+            <div class="sx-bar"><i data-pb></i></div>
+            <div class="sx-find sx-h" data-r0><span class="sev h">High</span><div><b>4.1 Exclusivity</b><small>Rule: contractor independence</small></div></div>
+            <div class="sx-find sx-h" data-r1><span class="sev m">Medium</span><div><b>6.2 Payment terms</b><small>Rule: payment terms</small></div></div>
+            <div class="sx-find sx-h" data-r2><span class="sev l">Passed</span><div><b>9.0 Governing law</b><small>Rule: governing law</small></div></div>
+            <div class="sx-sum sx-h" data-sum>2 findings · 1 passed · nothing outside this pack was checked</div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template data-svc>
+      <div class="sx-win">
+        <div class="sx-top"><b>Bring in a lawyer</b><span class="chip">Clause 4.1 needs judgment</span></div>
+        <div class="sx-body">
+          <div class="sx-list">
+            <div class="sx-li" data-k0><span>Contractor_Agreement.docx</span><span class="sx-ck">✓</span></div>
+            <div class="sx-li" data-k1><span>2 findings, each with its rule</span><span class="sx-ck">✓</span></div>
+            <div class="sx-li" data-k2><span>Your question and business context</span><span class="sx-ck">✓</span></div>
+          </div>
+          <div class="sx-bar"><i data-pb></i></div>
+          <div class="sx-stat" data-st>Preparing review package…</div>
+          <div class="sx-quote sx-h" data-q>
+            <div class="sx-qh"><span class="sx-av">EC</span><div><b>EqualDocs Counsel</b><small>Licensed lawyer</small></div><span class="chip">Written quote</span></div>
+            <p>Review clause 4.1 and advise on contractor independence. Fixed scope, quoted before any work starts.</p>
+            <div class="sx-row"><span class="sx-btn pr" data-ap>Approve quote</span><span class="sx-btn">Ask a question</span></div>
+          </div>
+          <div class="sx-done sx-h" data-dn>✓ Quote approved · lawyer assigned</div>
+        </div>
+      </div>
+    </template>
+
+    <template data-svc>
+      <div class="sx-win">
+        <div class="sx-top"><b>Contractor_Agreement.pdf</b><span class="chip" data-cnt>0 of 3 signed</span></div>
+        <div class="sx-body">
+          <div class="sx-sg" data-s0><span class="av">ML</span><div class="nm"><b>Maya Lin</b><small data-st>Sent</small></div><svg class="sx-sig" viewBox="0 0 120 30"><path d="M4 22c8-14 14-14 16-4s6 8 12-4 10-8 12 2 8 4 14-6 10 0 14 4 12 0 18-6"/></svg></div>
+          <div class="sx-sg" data-s1><span class="av">JD</span><div class="nm"><b>Jan Dolski</b><small data-st>Sent</small></div><svg class="sx-sig" viewBox="0 0 120 30"><path d="M4 18c6-10 10 6 16 0s8-12 14-4 6 10 12 2 10-6 16-2 8 6 14 0 10-4 16 2"/></svg></div>
+          <div class="sx-sg" data-s2><span class="av">PR</span><div class="nm"><b>Priya Raghavan</b><small data-st>Sent</small></div><svg class="sx-sig" viewBox="0 0 120 30"><path d="M4 20c10-12 12 4 20-2s6-10 14-2 4 8 14 0 8-8 16-2 10 4 16-2 8-2 14 2"/></svg></div>
+          <div class="sx-cert sx-h" data-cert><span class="sx-ck">✓</span><div><b>Completion certificate</b><small>Signed PDF saved to the Vendors project</small></div></div>
+        </div>
+      </div>
+    </template>
+
+    <template data-svc>
+      <div class="sx-win">
+        <div class="sx-top"><b>Legal Firewall</b><span class="chip">Vendors project</span></div>
+        <div class="sx-body">
+          <div class="sx-upd sx-h" data-up><span class="sx-pulse"></span><div><b>Legal Pack updated</b><small>Contractor · Québec · documents are being checked again</small></div></div>
+          <div class="sx-rc" data-r0><span class="fic">DOC</span><span class="nm">Contractor_Agreement.docx</span><span class="sx-mini"><i></i></span><span class="sx-res"></span></div>
+          <div class="sx-rc" data-r1><span class="fic">DOC</span><span class="nm">Contractor_A_Moreau.docx</span><span class="sx-mini"><i></i></span><span class="sx-res"></span></div>
+          <div class="sx-rc" data-r2><span class="fic">DOC</span><span class="nm">Contractor_L_Chen.docx</span><span class="sx-mini"><i></i></span><span class="sx-res"></span></div>
+          <div class="sx-rc" data-r3><span class="fic">DOC</span><span class="nm">Contractor_J_Smith.docx</span><span class="sx-mini"><i></i></span><span class="sx-res"></span></div>
+          <div class="sx-toast sx-h" data-t><span>1 document needs your review</span><span class="sx-btn pr">Review</span></div>
+        </div>
+      </div>
+    </template>
   </div></div>
 </section>
 
 <!-- USE CASES -->
 <section class="band" id="use-cases">
   <div class="wrap"><div class="in sec">
-    <div class="lf-head">
+    <div class="lf-head lf-c">
       <h2 class="h2">Built for small and medium businesses <span class="dim">with contracts to keep track of.</span></h2>
     </div>
-    <div class="uc">
-      <article class="uc-card">
-        <h3 class="h3">Property and real estate managers</h3>
-        <p>You manage leases and service contracts across several properties, each with its own renewal dates and obligations.</p>
-        <div class="uc-chips"><span class="chip">Leases</span><span class="chip">Vendor and maintenance contracts</span><span class="chip">Service agreements</span><span class="chip">NDAs</span></div>
-        <ul class="ticks">
-          <li>Upload a folder for each property and have every contract filed into a project</li>
-          <li>Check each one against the Legal Pack for its type and jurisdiction</li>
-          <li>Spot terms like auto-renewal or liability limits before you sign</li>
-          <li>Send for signature and keep every signed PDF in one place</li>
-        </ul>
-        <div class="uc-shot">
-          <div class="uc-r uc-hd"><span>Property</span><span>Contracts</span><span>Status</span></div>
-          <div class="uc-r"><span>128 King Street</span><span>14</span><span class="st warn">2 findings</span></div>
-          <div class="uc-r"><span>Riverside Lofts</span><span>9</span><span class="st ok">Clear</span></div>
-          <div class="uc-r"><span>Harbour Plaza</span><span>21</span><span class="st warn">1 finding</span></div>
-        </div>
-      </article>
-      <article class="uc-card">
-        <h3 class="h3">HR and People teams</h3>
-        <p>You hire employees and contractors, and every agreement needs to hold up, from the offer letter to the last day.</p>
-        <div class="uc-chips"><span class="chip">Employment contracts</span><span class="chip">Contractor agreements</span><span class="chip">Offer letters</span><span class="chip">NDAs</span></div>
-        <ul class="ticks">
-          <li>Draft employment and contractor agreements from your facts</li>
-          <li>Flag contractor terms that can point to employment, like exclusivity</li>
-          <li>Bring in a licensed lawyer with a written quote before work starts</li>
-          <li>Keep agreements checked again whenever a Legal Pack is updated</li>
-        </ul>
-        <div class="uc-shot">
-          <div class="uc-r uc-hd"><span>Person</span><span>Type</span><span>Status</span></div>
-          <div class="uc-r"><span>A. Moreau</span><span>Contractor</span><span class="st warn">1 finding</span></div>
-          <div class="uc-r"><span>J. Patel</span><span>Employee</span><span class="st ok">✓ Signed</span></div>
-          <div class="uc-r"><span>L. Chen</span><span>Contractor</span><span class="st wait">Waiting for signature</span></div>
-        </div>
-      </article>
-    </div>
-    <div class="uc-foot">
-      <p>Also used by growing and cross-border businesses that don't have a full in-house legal team.</p>
-      <a class="btn btn-primary" href="#ask">Free trial</a>
+    <div class="ucx" id="ucx">
+      <div class="ucx-track">
+        <article class="ucx-slide on">
+          <div class="ucx-bg b1"><span class="ucx-ph">[Placeholder] Photo of a property manager reviewing leases</span></div>
+          <span class="ucx-tag">Property management</span>
+          <div class="ucx-copy">
+            <p class="ucx-q">Leases and vendor contracts pile up across every property. EqualDocs files each one into a project, checks it against the Legal Pack for its type and jurisdiction, and flags terms like auto-renewal before you sign.</p>
+            <b>For property and real estate managers</b>
+            <span>Leases · Vendor and maintenance contracts · Service agreements</span>
+          </div>
+        </article>
+        <article class="ucx-slide">
+          <div class="ucx-bg b2"><span class="ucx-ph">[Placeholder] Photo of an HR lead onboarding a contractor</span></div>
+          <span class="ucx-tag">HR &amp; People</span>
+          <div class="ucx-copy">
+            <p class="ucx-q">Every hire comes with paperwork that has to hold up. EqualDocs drafts employment and contractor agreements from your facts, flags contractor terms that can point to employment, and brings in a licensed lawyer when judgment is needed.</p>
+            <b>For HR and People teams</b>
+            <span>Employment contracts · Contractor agreements · Offer letters</span>
+          </div>
+        </article>
+        <article class="ucx-slide">
+          <div class="ucx-bg b3"><span class="ucx-ph">[Placeholder] Photo of a small business team at work</span></div>
+          <span class="ucx-tag">Growing businesses</span>
+          <div class="ucx-copy">
+            <p class="ucx-q">No in-house legal team? Start with the business problem. AI handles routine legal work at software economics, and licensed lawyers step in when professional judgment is required.</p>
+            <b>For growing and cross-border businesses</b>
+            <span>Hiring · Contracting · Expanding across jurisdictions</span>
+          </div>
+        </article>
+      </div>
+      <div class="ucx-dots" role="tablist" aria-label="Use cases">
+        <button type="button" role="tab" aria-selected="true" aria-label="Property management"><i></i></button>
+        <button type="button" role="tab" aria-selected="false" aria-label="HR and People"><i></i></button>
+        <button type="button" role="tab" aria-selected="false" aria-label="Growing businesses"><i></i></button>
+      </div>
     </div>
   </div></div>
 </section>
@@ -1082,29 +1255,117 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
     document.querySelectorAll('.mk').forEach(function(m){prep(m);io.observe(m)});
   }
 
-  // service: step list drives the snippet; auto-advances slowly while the section is on screen
+  // service: each step plays a short product sequence; the list advances when it finishes
   (function(){
-    var items=[].slice.call(document.querySelectorAll('#svcSteps li')),shots=[].slice.call(document.querySelectorAll('.svc-shot'));
-    var cur=0,timer=null,visible=false,hover=false,DUR=7000;
-    function show(n){
-      cur=n;
+    var items=[].slice.call(document.querySelectorAll('#svcSteps li')),tpls=[].slice.call(document.querySelectorAll('template[data-svc]'));
+    var stage=$('svcStage'),cur=0,T=[],adv=null,visible=false,hover=false,HOLD=1600,instant=false;
+    function at(ms,f){if(instant)f();else T.push(setTimeout(f,ms))}
+    function q(s){return stage.querySelector(s)}
+    function show(el){if(el)el.classList.add('in')}
+    function type(el,text,start,speed){if(instant){el.textContent=text;return start}for(var i=1;i<=text.length;i++)(function(i){at(start+i*speed,function(){el.textContent=text.slice(0,i)})})(i);return start+text.length*speed}
+    function press(el){el.classList.add('press');setTimeout(function(){el.classList.remove('press')},170)}
+    var TL=[
+      function(){ // ask
+        var inp=q('[data-in]'),t;
+        at(250,function(){inp.classList.remove('sx-ph');inp.textContent=''});
+        t=type(inp,"Can my employer change my contract mid-year?",250,26);
+        at(t+200,function(){press(q('[data-send]'))});
+        at(t+350,function(){var m=q('[data-q]');m.textContent=inp.textContent;show(m);inp.textContent='Ask a legal question…';inp.classList.add('sx-ph')});
+        at(t+650,function(){show(q('[data-ty]'))});
+        at(t+1350,function(){q('[data-ty]').classList.remove('in');show(q('[data-a]'))});
+        var t2=type(q('[data-a1]'),'Usually only with your agreement. Check three things:',t+1350,16);
+        [].slice.call(stage.querySelectorAll('[data-a] li')).forEach(function(li,i){at(t2+250+i*280,function(){show(li)})});
+        at(t2+1250,function(){show(q('[data-cta]'))});
+        return t2+1500;
+      },
+      function(){ // draft
+        var t=type(q('[data-f0]'),'Mutual NDA',200,40);
+        t=type(q('[data-f1]'),'Northwind Labs + a supplier',t+150,24);
+        t=type(q('[data-f2]'),'Sharing pricing for a pilot',t+150,24);
+        at(t+250,function(){press(q('[data-gen]'))});
+        at(t+400,function(){show(q('[data-sk]'))});
+        at(t+1000,function(){show(q('[data-t]'))});
+        at(t+1300,function(){show(q('[data-p1]'))});
+        at(t+1650,function(){show(q('[data-p2]'));q('[data-sk]').classList.remove('in')});
+        [].slice.call(stage.querySelectorAll('.blank')).forEach(function(b,i){at(t+1950+i*220,function(){b.classList.add('pop')})});
+        at(t+2700,function(){show(q('[data-ft]'))});
+        return t+3000;
+      },
+      function(){ // check
+        var paper=q('[data-paper]'),cls=['r','w','g'];
+        at(200,function(){paper.classList.add('scanning')});
+        [0,1,2].forEach(function(i){at(700+i*750,function(){q('[data-c'+i+'] .hl').classList.add(cls[i]);show(q('[data-r'+i+']'));q('[data-pc]').textContent=(i+1)+' / 3';q('[data-pb]').style.width=((i+1)/3*100)+'%'})});
+        at(2900,function(){paper.classList.remove('scanning');show(q('[data-sum]'))});
+        return 3700;
+      },
+      function(){ // lawyer
+        [0,1,2].forEach(function(i){at(250+i*380,function(){q('[data-k'+i+']').classList.add('on');q('[data-pb]').style.width=((i+1)/3*100)+'%'})});
+        at(1450,function(){q('[data-st]').textContent='Sent to EqualDocs Counsel'});
+        at(2100,function(){q('[data-st]').textContent='Written quote received';show(q('[data-q]'))});
+        at(3300,function(){press(q('[data-ap]'))});
+        at(3500,function(){q('[data-q]').classList.add('dim');show(q('[data-dn]'))});
+        return 4300;
+      },
+      function(){ // sign
+        [0,1,2].forEach(function(i){var b=300+i*1150,row=q('[data-s'+i+']'),st=row.querySelector('[data-st]');
+          at(b,function(){st.textContent='Viewed'});
+          at(b+300,function(){st.textContent='Signing…';row.classList.add('draw')});
+          at(b+1000,function(){st.textContent='✓ Signed';row.classList.add('ok');q('[data-cnt]').textContent=(i+1)+' of 3 signed'});
+        });
+        at(3800,function(){show(q('[data-cert]'))});
+        return 4600;
+      },
+      function(){ // stay checked
+        at(200,function(){show(q('[data-up]'))});
+        var res=[['✓ No new findings','ok'],['1 new finding','w'],['✓ No new findings','ok'],['✓ No new findings','ok']];
+        res.forEach(function(r,i){var row=q('[data-r'+i+']');
+          at(650+i*300,function(){row.querySelector('.sx-mini i').style.width='100%';row.querySelector('.sx-res').textContent='Checking…'});
+          at(1500+i*300,function(){var e=row.querySelector('.sx-res');e.textContent=r[0];e.className='sx-res '+r[1]});
+        });
+        at(2900,function(){show(q('[data-t]'))});
+        return 3800;
+      }
+    ];
+    function play(n,inst){
+      T.forEach(clearTimeout);T=[];
+      stage.innerHTML='';stage.appendChild(tpls[n].content.cloneNode(true));
+      instant=!!inst;var len=TL[n]();instant=false;return len;
+    }
+    function select(n){
+      cur=n;clearTimeout(adv);
       items.forEach(function(li,k){var on=k===n;li.classList.toggle('on',on);li.querySelector('button').setAttribute('aria-expanded',on);li.querySelector('.svc-bar').classList.remove('run')});
-      shots.forEach(function(s,k){s.classList.toggle('on',k===n)});
-      schedule();
+      var still=reduce||!visible;
+      var len=play(n,still);
+      if(!still)advance(len+HOLD);
     }
-    function schedule(){
-      clearTimeout(timer);
-      var bar=items[cur].querySelector('.svc-bar');bar.classList.remove('run');
-      if(reduce||!visible||hover)return;
-      void bar.offsetWidth;bar.style.setProperty('--svc-dur',DUR+'ms');bar.classList.add('run');
-      timer=setTimeout(function(){show((cur+1)%items.length)},DUR);
+    function advance(ms){
+      clearTimeout(adv);var bar=items[cur].querySelector('.svc-bar');bar.classList.remove('run');
+      if(hover||reduce||!visible)return;
+      void bar.offsetWidth;bar.style.setProperty('--svc-dur',ms+'ms');bar.classList.add('run');
+      adv=setTimeout(function(){select((cur+1)%items.length)},ms);
     }
-    items.forEach(function(li,k){li.querySelector('button').addEventListener('click',function(){show(k)})});
+    items.forEach(function(li,k){li.querySelector('button').addEventListener('click',function(){select(k)})});
     var box=document.querySelector('.svc');
-    box.addEventListener('mouseenter',function(){hover=true;schedule()});
-    box.addEventListener('mouseleave',function(){hover=false;schedule()});
-    if('IntersectionObserver' in window){new IntersectionObserver(function(es){visible=es[0].isIntersecting;schedule()},{threshold:0.35}).observe(box)}
-    show(0);
+    box.addEventListener('mouseenter',function(){hover=true;clearTimeout(adv);items[cur].querySelector('.svc-bar').classList.remove('run')});
+    box.addEventListener('mouseleave',function(){hover=false;advance(2500)});
+    if('IntersectionObserver' in window){new IntersectionObserver(function(es){var v=es[0].isIntersecting;if(v&&!visible){visible=true;select(cur)}else if(!v){visible=false;clearTimeout(adv)}},{threshold:0.35}).observe(box)}
+    play(0,true);
+  })();
+
+  // use cases carousel: advances every 7s while on screen
+  (function(){
+    var root=$('ucx'),slides=[].slice.call(root.querySelectorAll('.ucx-slide')),dots=[].slice.call(root.querySelectorAll('.ucx-dots button'));
+    var cur=0,timer=null,visible=false,DUR=7000;
+    function go(n){
+      cur=n;clearTimeout(timer);
+      slides.forEach(function(s,k){s.classList.toggle('on',k===n)});
+      dots.forEach(function(d,k){d.setAttribute('aria-selected',k===n);d.classList.remove('run')});
+      if(reduce||!visible)return;
+      var d=dots[n];void d.offsetWidth;d.style.setProperty('--uc-dur',DUR+'ms');d.classList.add('run');
+      timer=setTimeout(function(){go((cur+1)%slides.length)},DUR);
+    }
+    dots.forEach(function(d,k){d.addEventListener('click',function(){go(k)})});
+    if('IntersectionObserver' in window){new IntersectionObserver(function(es){var v=es[0].isIntersecting;if(v&&!visible){visible=true;go(cur)}else if(!v){visible=false;clearTimeout(timer);dots[cur].classList.remove('run')}},{threshold:0.4}).observe(root)}
   })();
 
   // dot-matrix wordmark
