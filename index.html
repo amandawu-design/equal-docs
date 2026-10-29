@@ -329,7 +329,7 @@ a{color:inherit;text-decoration:none}
 #firewall .lf-head{margin-inline:auto;text-align:center;justify-items:center}
 #firewall *,#service *,#use-cases *{font-family:var(--font-sans)}
 #service template{display:none}
-.lf-head{display:grid;gap:18px;margin-bottom:48px;max-width:860px}
+.lf-head{display:grid;gap:18px;margin-bottom:48px}
 .lf-layers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 @media (max-width:900px){.lf-layers{grid-template-columns:1fr}}
 .lf-layer{position:relative;background:var(--card);border:1px solid var(--line-2);border-radius:var(--r-card);padding:24px;display:flex;flex-direction:column;gap:8px;min-width:0}
@@ -361,7 +361,7 @@ a{color:inherit;text-decoration:none}
 @media (max-width:760px){.lf-row{grid-template-columns:1fr 1fr;gap:6px 16px}.lf-row>:first-child{grid-column:1/-1}.lf-th>:first-child{display:none}}
 
 /* service: heading on top, step list beside a fast product snippet */
-.svc-head{display:grid;gap:18px;margin-bottom:48px;max-width:860px}
+.svc-head{display:grid;gap:18px;margin-bottom:48px}
 .svc{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,4vw,56px);align-items:start}
 @media (max-width:960px){.svc{grid-template-columns:1fr}.svc-r{order:-1}}
 .svc-l{display:flex;flex-direction:column;align-items:flex-start}
@@ -498,23 +498,21 @@ a{color:inherit;text-decoration:none}
 
 /* use cases: Mercury-style carousel */
 .lf-c{margin-inline:auto;text-align:center;justify-items:center}
-.ucx-track{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:2/1;background:var(--navy)}
-@media (max-width:760px){.ucx-track{aspect-ratio:auto;min-height:560px}}
+.ucx-track{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:2/1;background:#ECEEF4}
+@media (max-width:760px){.ucx-track{aspect-ratio:auto;min-height:620px}}
 .ucx-slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;pointer-events:none}
 .ucx-slide.on{opacity:1;pointer-events:auto}
-.ucx-bg{position:absolute;inset:0}
-.ucx-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,22,34,.88) 0%,rgba(18,22,34,.55) 45%,rgba(18,22,34,.1) 100%)}
-@media (max-width:760px){.ucx-bg::after{background:linear-gradient(0deg,rgba(18,22,34,.92) 30%,rgba(18,22,34,.35) 100%)}}
-.ucx-bg.b1{background:radial-gradient(60% 80% at 80% 30%,#5A6B86,transparent 70%),linear-gradient(135deg,#2E3D55,#1B2333)}
-.ucx-bg.b2{background:radial-gradient(60% 80% at 78% 35%,#5B57B8,transparent 70%),linear-gradient(135deg,#263549,#1A1F33)}
-.ucx-bg.b3{background:radial-gradient(60% 80% at 80% 30%,#4A6A7E,transparent 70%),linear-gradient(135deg,#22324A,#151B29)}
-.ucx-ph{position:absolute;right:6%;top:50%;transform:translateY(-50%);z-index:1;max-width:240px;text-align:center;padding:10px 14px;border:1px dashed rgba(252,211,77,.7);border-radius:10px;color:#FCD34D;font-size:12px;background:rgba(0,0,0,.2)}
-@media (max-width:760px){.ucx-ph{top:20%;left:50%;right:auto;transform:translateX(-50%)}}
-.ucx-tag{position:absolute;top:clamp(18px,3vw,32px);left:clamp(18px,3.5vw,40px);z-index:2;padding:6px 12px;border-radius:8px;background:rgba(14,16,26,.78);color:#fff;font-size:14px}
-.ucx-copy{position:absolute;left:clamp(18px,3.5vw,40px);bottom:clamp(20px,4vw,48px);right:clamp(18px,3.5vw,40px);z-index:2;max-width:560px;color:#fff;display:grid;gap:4px}
+.ucx-slide.s1{background:radial-gradient(70% 90% at 78% 45%,#F7F6FC 0%,#E6E8F2 70%)}
+.ucx-slide.s2{background:radial-gradient(70% 90% at 78% 45%,#F5F4FF 0%,#E3E3F6 70%)}
+.ucx-slide.s3{background:radial-gradient(70% 90% at 78% 45%,#F8F6F1 0%,#E9E7E2 70%)}
+.ucx-art{position:absolute;top:0;right:0;bottom:0;width:58%}
+.ucx-art canvas{display:block;width:100%!important;height:100%!important}
+@media (max-width:760px){.ucx-art{left:0;width:auto;bottom:auto;height:50%}}
+.ucx-tag{position:absolute;top:clamp(18px,3vw,32px);left:clamp(18px,3.5vw,40px);z-index:2;padding:6px 12px;border-radius:8px;background:var(--ink);color:#fff;font-size:14px}
+.ucx-copy{position:absolute;left:clamp(18px,3.5vw,40px);bottom:clamp(20px,4vw,48px);right:clamp(18px,3.5vw,40px);z-index:2;max-width:520px;color:var(--ink);display:grid;gap:4px}
 .ucx-q{margin:0 0 18px;font-size:clamp(18px,2.1vw,26px);line-height:1.35;letter-spacing:-.01em;text-wrap:pretty}
 .ucx-copy b{font-weight:500;font-size:clamp(15px,1.4vw,18px)}
-.ucx-copy span{color:rgba(255,255,255,.72);font-size:clamp(13px,1.2vw,16px)}
+.ucx-copy span{color:var(--ink-2);font-size:clamp(13px,1.2vw,16px)}
 .ucx-dots{display:flex;justify-content:center;gap:10px;margin-top:22px}
 .ucx-dots button{width:min(130px,26vw);height:18px;padding:7px 0;border:0;background:none;cursor:pointer}
 .ucx-dots i{display:block;height:4px;border-radius:3px;background:var(--line-2);position:relative;overflow:hidden}
@@ -522,6 +520,7 @@ a{color:inherit;text-decoration:none}
 .ucx-dots button[aria-selected="true"] i::after{width:100%}
 .ucx-dots button.run i::after{width:0;animation:ucfill var(--uc-dur,7s) linear forwards}
 @keyframes ucfill{to{width:100%}}
+@media (min-width:960px){.sec-head .h2,.lf-head .h2,.svc-head .h2{width:66.667%;max-width:none}}
 /* bento */
 /* feature mockups: slow, one-time play when fully in view (only with JS + motion allowed) */
 .mk [data-s]{transition:opacity .9s ease,transform .9s ease,background-color .9s ease,color .9s ease}
@@ -1034,8 +1033,8 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
     </div>
     <div class="ucx" id="ucx">
       <div class="ucx-track">
-        <article class="ucx-slide on">
-          <div class="ucx-bg b1"><span class="ucx-ph">[Placeholder] Photo of a property manager reviewing leases</span></div>
+        <article class="ucx-slide s1 on">
+          <div class="ucx-art" aria-hidden="true"></div>
           <span class="ucx-tag">Property management</span>
           <div class="ucx-copy">
             <p class="ucx-q">Leases and vendor contracts pile up across every property. EqualDocs files each one into a project, checks it against the Legal Pack for its type and jurisdiction, and flags terms like auto-renewal before you sign.</p>
@@ -1043,8 +1042,8 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
             <span>Leases · Vendor and maintenance contracts · Service agreements</span>
           </div>
         </article>
-        <article class="ucx-slide">
-          <div class="ucx-bg b2"><span class="ucx-ph">[Placeholder] Photo of an HR lead onboarding a contractor</span></div>
+        <article class="ucx-slide s2">
+          <div class="ucx-art" aria-hidden="true"></div>
           <span class="ucx-tag">HR &amp; People</span>
           <div class="ucx-copy">
             <p class="ucx-q">Every hire comes with paperwork that has to hold up. EqualDocs drafts employment and contractor agreements from your facts, flags contractor terms that can point to employment, and brings in a licensed lawyer when judgment is needed.</p>
@@ -1052,8 +1051,8 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
             <span>Employment contracts · Contractor agreements · Offer letters</span>
           </div>
         </article>
-        <article class="ucx-slide">
-          <div class="ucx-bg b3"><span class="ucx-ph">[Placeholder] Photo of a small business team at work</span></div>
+        <article class="ucx-slide s3">
+          <div class="ucx-art" aria-hidden="true"></div>
           <span class="ucx-tag">Growing businesses</span>
           <div class="ucx-copy">
             <p class="ucx-q">No in-house legal team? Start with the business problem. AI handles routine legal work at software economics, and licensed lawyers step in when professional judgment is required.</p>
@@ -1145,6 +1144,7 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
   </div></div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 (function(){
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1352,6 +1352,75 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
     play(0,true);
   })();
 
+  // use cases: soft 3D sculptures (three.js), rendered only for the visible slide
+  var UC3D=(function(){
+    if(!window.THREE)return null;
+    var T=window.THREE,scenes=[],running=false,last=0,clock=0;
+    var C={navy:0x263549,indigo:0x4F46E5,lav:0xA5B4FC,tint:0xE0E7FF,white:0xF6F7FB,gold:0xD8B06A};
+    function lin(c){return new T.Color(c).convertSRGBToLinear()}
+    function mat(c,o){return new T.MeshPhysicalMaterial(Object.assign({color:lin(c),roughness:.36,metalness:.04,clearcoat:.7,clearcoatRoughness:.22},o||{}))}
+    function shade(m){m.castShadow=true;m.receiveShadow=true;return m}
+    function base(el){
+      var r;try{r=new T.WebGLRenderer({antialias:true,alpha:true})}catch(e){return null}
+      r.setPixelRatio(Math.min(2,window.devicePixelRatio||1));
+      r.shadowMap.enabled=true;r.shadowMap.type=T.PCFSoftShadowMap;
+      r.outputEncoding=T.sRGBEncoding;r.toneMapping=T.ACESFilmicToneMapping;r.toneMappingExposure=.95;
+      el.appendChild(r.domElement);
+      var sc=new T.Scene(),cam=new T.PerspectiveCamera(28,1,.1,100);
+      cam.position.set(8.4,6.4,10.4);cam.lookAt(0,1.45,0);
+      sc.add(new T.HemisphereLight(0xffffff,lin(0xC8CCE2),.9));
+      var key=new T.DirectionalLight(0xffffff,1.7);key.position.set(5,9,6);key.castShadow=true;
+      key.shadow.mapSize.set(1024,1024);var sc2=key.shadow.camera;sc2.left=-5;sc2.right=5;sc2.top=5;sc2.bottom=-5;key.shadow.bias=-.0004;
+      sc.add(key);
+      var fill=new T.DirectionalLight(lin(0xE0E7FF),.5);fill.position.set(-6,3,-3);sc.add(fill);
+      var g=new T.Mesh(new T.PlaneGeometry(40,40),new T.ShadowMaterial({opacity:.13}));g.rotation.x=-Math.PI/2;g.receiveShadow=true;sc.add(g);
+      return {r:r,sc:sc,cam:cam,el:el};
+    }
+    var build=[
+      function(s){ // property: a small block of buildings with a lease floating above
+        var grp=new T.Group();s.sc.add(grp);
+        grp.add(shade(new T.Mesh(new T.CylinderGeometry(2.3,2.3,.16,96),mat(C.white))));
+        var B=[[-.9,-.5,.7,1.7,C.navy],[.05,-.85,.75,2.5,C.indigo],[.95,-.2,.65,1.2,C.tint],[-.25,.55,.7,1.95,C.lav],[.85,.85,.55,.85,C.white],[-1.15,.65,.5,1,C.tint]];
+        B.forEach(function(b){var m=shade(new T.Mesh(new T.BoxGeometry(b[2],b[3],b[2]),mat(b[4])));m.position.set(b[0],.08+b[3]/2,b[1]);grp.add(m)});
+        var doc=new T.Group();doc.add(shade(new T.Mesh(new T.BoxGeometry(1.25,.05,1.6),mat(C.white,{roughness:.5,clearcoat:.2}))));
+        var seal=shade(new T.Mesh(new T.SphereGeometry(.17,48,48),mat(C.gold,{metalness:.35,roughness:.28})));seal.position.set(.35,.13,.45);doc.add(seal);
+        [-.45,-.25,-.05].forEach(function(z,i){var l=new T.Mesh(new T.BoxGeometry(.8-i*.15,.012,.06),mat(C.lav,{clearcoat:0}));l.position.set(-.1+i*.07,.032,z);doc.add(l)});
+        doc.position.set(0,3.25,0);doc.rotation.set(.32,.4,.1);grp.add(doc);
+        s.tick=function(t){grp.rotation.y=t*.16;doc.position.y=3.25+Math.sin(t*1.3)*.14;doc.rotation.z=.1+Math.sin(t*.9)*.06};
+      },
+      function(s){ // people: spheres orbiting a linking ring
+        var grp=new T.Group();s.sc.add(grp);
+        var ped=shade(new T.Mesh(new T.CylinderGeometry(1.1,1.25,.35,96),mat(C.white)));ped.position.y=.18;grp.add(ped);
+        var ring=shade(new T.Mesh(new T.TorusGeometry(1.25,.13,48,160),mat(C.indigo)));ring.position.y=1.9;grp.add(ring);
+        var ring2=shade(new T.Mesh(new T.TorusGeometry(.8,.09,40,140),mat(C.lav)));ring2.position.y=1.9;grp.add(ring2);
+        var core=shade(new T.Mesh(new T.SphereGeometry(.42,64,64),mat(C.gold,{metalness:.35,roughness:.26})));core.position.y=1.9;grp.add(core);
+        var orb=[[.5,C.navy,1.9,.55,0],[.36,C.tint,1.55,.8,2.1],[.28,C.lav,2.25,1.05,4.2]].map(function(o){var m=shade(new T.Mesh(new T.SphereGeometry(o[0],64,64),mat(o[1])));grp.add(m);return {m:m,r:o[2],sp:o[3],ph:o[4]}});
+        s.tick=function(t){ring.rotation.set(1.15+Math.sin(t*.5)*.12,t*.35,0);ring2.rotation.set(.4,-t*.5,.9);
+          orb.forEach(function(o,i){var a=t*o.sp+o.ph;o.m.position.set(Math.cos(a)*o.r,1.9+Math.sin(a*1.3+i)*.55,Math.sin(a)*o.r)});core.position.y=1.9+Math.sin(t*1.1)*.06};
+      },
+      function(s){ // growth: a spiral of discs stepping upward
+        var grp=new T.Group();grp.scale.setScalar(1.3);grp.position.y=-.2;s.sc.add(grp);var cols=[C.tint,C.tint,C.lav,C.lav,C.indigo,C.indigo,C.navy,C.navy,C.gold];
+        var discs=cols.map(function(c,i){var gold=i===cols.length-1;var m=shade(new T.Mesh(new T.CylinderGeometry(.55,.55,.2,96),mat(c,gold?{metalness:.4,roughness:.26}:null)));grp.add(m);return m});
+        s.tick=function(t){discs.forEach(function(m,i){var a=i*.62+t*.25;m.position.set(Math.cos(a)*.85,.12+i*.3+Math.sin(t*1.8-i*.55)*.06,Math.sin(a)*.85);m.rotation.y=-a})};
+        s.cam.lookAt(0,1.35,0);
+      }
+    ];
+    function size(s){var w=s.el.clientWidth,h=s.el.clientHeight;if(!w||!h)return;if(w!==s.w||h!==s.h){s.w=w;s.h=h;s.r.setSize(w,h,false);s.cam.aspect=w/h;s.cam.updateProjectionMatrix()}}
+    function get(i){
+      if(scenes[i]!==undefined)return scenes[i];
+      var el=document.querySelectorAll('.ucx-art')[i],s=el&&base(el);
+      if(s){build[i](s);s.tick(0)}scenes[i]=s||null;return scenes[i];
+    }
+    var active=0;
+    function draw(i){var s=get(i);if(!s)return;size(s);s.tick(clock);s.r.render(s.sc,s.cam)}
+    function loop(ts){if(!running)return;var dt=last?Math.min(.05,(ts-last)/1000):0;last=ts;clock+=dt;draw(active);requestAnimationFrame(loop)}
+    return {
+      show:function(i){active=i;draw(i)},
+      start:function(){if(reduce){draw(active);return}if(!running){running=true;last=0;requestAnimationFrame(loop)}},
+      stop:function(){running=false}
+    };
+  })();
+
   // use cases carousel: advances every 7s while on screen
   (function(){
     var root=$('ucx'),slides=[].slice.call(root.querySelectorAll('.ucx-slide')),dots=[].slice.call(root.querySelectorAll('.ucx-dots button'));
@@ -1359,13 +1428,14 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
     function go(n){
       cur=n;clearTimeout(timer);
       slides.forEach(function(s,k){s.classList.toggle('on',k===n)});
+      if(UC3D)UC3D.show(n);
       dots.forEach(function(d,k){d.setAttribute('aria-selected',k===n);d.classList.remove('run')});
       if(reduce||!visible)return;
       var d=dots[n];void d.offsetWidth;d.style.setProperty('--uc-dur',DUR+'ms');d.classList.add('run');
       timer=setTimeout(function(){go((cur+1)%slides.length)},DUR);
     }
     dots.forEach(function(d,k){d.addEventListener('click',function(){go(k)})});
-    if('IntersectionObserver' in window){new IntersectionObserver(function(es){var v=es[0].isIntersecting;if(v&&!visible){visible=true;go(cur)}else if(!v){visible=false;clearTimeout(timer);dots[cur].classList.remove('run')}},{threshold:0.4}).observe(root)}
+    if('IntersectionObserver' in window){new IntersectionObserver(function(es){var v=es[0].isIntersecting;if(v&&!visible){visible=true;go(cur);if(UC3D)UC3D.start()}else if(!v){visible=false;clearTimeout(timer);dots[cur].classList.remove('run');if(UC3D)UC3D.stop()}},{threshold:0.15}).observe(root)}
   })();
 
   // dot-matrix wordmark
