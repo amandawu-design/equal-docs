@@ -325,6 +325,85 @@ a{color:inherit;text-decoration:none}
 .as-ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex:0 0 auto;background:var(--primary-subtle);color:var(--primary-deep);border:1px solid var(--primary-tint)}
 .assure b{display:block;font-weight:500;font-size:15px}
 .assure span:not(.as-ic){font-size:13.5px;color:var(--ink-2)}
+/* legal firewall: unique advantage */
+#firewall *,#service *,#use-cases *{font-family:var(--font-sans)}
+.lf-head{display:grid;gap:18px;margin-bottom:48px;max-width:860px}
+.lf-layers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:900px){.lf-layers{grid-template-columns:1fr}}
+.lf-layer{position:relative;background:var(--card);border:1px solid var(--line-2);border-radius:var(--r-card);padding:24px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.lf-layer>p{margin:0;color:var(--ink-2);font-size:14.5px}
+.lf-n{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:var(--navy);color:#fff;font-size:13px;font-weight:600;margin-bottom:6px}
+.lf-viz{margin-top:auto;padding-top:18px;display:grid;gap:8px}
+.lf-pack{display:flex;justify-content:space-between;gap:10px;padding:10px 12px;border-radius:10px;border:1px solid var(--primary-tint);background:var(--primary-subtle);font-size:13px}
+.lf-pack b{font-weight:500;color:var(--primary-deep)}
+.lf-pack span{color:var(--ink-2)}
+.lf-pack:nth-child(2){margin-left:10px}.lf-pack:nth-child(3){margin-left:20px}
+.lf-pass{margin:0;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-size:13px;line-height:1.6;color:var(--ink-2);background:var(--surface)}
+.lf-pass mark{background:var(--risk-bg);box-shadow:inset 0 -2px 0 var(--risk);color:var(--ink);padding:0 2px;border-radius:2px}
+.lf-find{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-2)}
+.lf-scope{display:flex;gap:6px;flex-wrap:wrap;font-size:12px;color:var(--ink-2)}
+.lf-scope span{padding:4px 8px;border-radius:6px;border:1px solid var(--line);background:var(--card)}
+.lf-scope b{font-weight:500;color:var(--ink)}
+.lf-acts{justify-items:start}
+.lf-a{font-size:13px;padding:7px 14px;border-radius:999px;border:1px solid var(--line-2);color:var(--ink)}
+.lf-a.pr{background:var(--primary);border-color:var(--primary);color:var(--on-primary)}
+.lf-a.ok{color:var(--ok);border-color:var(--ok-line);background:var(--ok-bg)}
+.lf-compare{margin-top:40px;border:1px solid var(--line-2);border-radius:var(--r-card);overflow:hidden;background:var(--card)}
+.lf-row{display:grid;grid-template-columns:200px 1fr 1fr;gap:20px;padding:14px 22px;border-top:1px solid var(--line);font-size:14.5px;align-items:start}
+.lf-row>*{min-width:0}
+.lf-row [role=rowheader]{font-weight:500}
+.lf-row [role=cell]:nth-child(2){color:var(--muted)}
+.lf-row [role=cell]:nth-child(3){color:var(--ink)}
+.lf-th{border-top:0;background:var(--surface);font-size:13px;color:var(--ink-2);font-weight:500}
+.lf-th span:last-child{color:var(--primary-deep)}
+@media (max-width:760px){.lf-row{grid-template-columns:1fr 1fr;gap:6px 16px}.lf-row>:first-child{grid-column:1/-1}.lf-th>:first-child{display:none}}
+
+/* service: Mercury-style step list + snippet */
+.svc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(32px,5vw,72px);align-items:start}
+@media (max-width:960px){.svc{grid-template-columns:1fr}}
+.svc-l{display:flex;flex-direction:column;gap:18px;align-items:flex-start}
+.svc-steps{list-style:none;margin:12px 0 0;padding:0;width:100%}
+.svc-steps li{position:relative;border-top:1px solid var(--line-2)}
+.svc-steps li:last-child{border-bottom:1px solid var(--line-2)}
+.svc-steps button{display:grid;gap:6px;width:100%;text-align:left;background:none;border:0;padding:16px 0;font:inherit;color:var(--ink-2);cursor:pointer}
+.svc-steps b{font-weight:500;font-size:16px;display:flex;align-items:center;gap:10px}
+.svc-steps b::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--line-2);transition:background .3s}
+.svc-steps span{font-size:14.5px;color:var(--ink-2);max-height:0;overflow:hidden;opacity:0;transition:max-height .5s ease,opacity .5s ease;padding-left:16px}
+.svc-steps li.on b{color:var(--ink)}
+.svc-steps li.on b::before{background:var(--primary)}
+.svc-steps li.on span{max-height:120px;opacity:1}
+.svc-steps button:hover b{color:var(--ink)}
+.svc-bar{position:absolute;left:0;top:-1px;height:2px;width:0;background:var(--primary)}
+.svc-steps li.on .svc-bar.run{width:100%;transition:width linear var(--svc-dur,7s)}
+.svc-r{position:sticky;top:96px}
+@media (max-width:960px){.svc-r{position:static}}
+.svc-panel{position:relative;border-radius:18px;border:1px solid var(--line-2);background-color:var(--card);background-image:radial-gradient(#DDE0E6 1px,transparent 1px);background-size:16px 16px;padding:clamp(18px,4vw,48px);min-height:420px;display:grid;align-items:center}
+.svc-shot{display:none}
+.svc-shot.on{display:block;animation:shotin .5s ease}
+@keyframes shotin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.svc-shot .mock-inner{max-width:none;font-size:14px;padding:18px}
+.shot-h{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding-bottom:12px;margin-bottom:6px;border-bottom:1px solid var(--line)}
+.shot-h b{font-weight:500}
+.shot-f{margin-top:10px;font-size:12.5px;color:var(--muted)}
+.doc-ln{height:7px;border-radius:4px;background:#EEF0F3;margin:9px 0}
+.st.warn{color:var(--warn)}
+.mk .st[data-flip]{transition:color .8s ease}
+.anim .mk .st[data-flip].pend{color:var(--muted)}
+
+/* use cases */
+.uc{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:860px){.uc{grid-template-columns:1fr}}
+.uc-card{background:var(--card);border:1px solid var(--line-2);border-radius:var(--r-card);padding:28px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.uc-card>p{margin:0;color:var(--ink-2);font-size:15px;max-width:52ch}
+.uc-chips{display:flex;gap:6px;flex-wrap:wrap}
+.uc-card .ticks{margin-top:4px}
+.uc-shot{margin-top:auto;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13px}
+.uc-r{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:10px;padding:10px 14px;border-top:1px solid var(--line)}
+.uc-r>*{min-width:0}
+.uc-hd{border-top:0;background:var(--surface);color:var(--muted);font-size:12px}
+.uc-foot{margin-top:28px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.uc-foot p{margin:0;color:var(--ink-2)}
+
 /* bento */
 /* feature mockups: slow, one-time play when fully in view (only with JS + motion allowed) */
 .mk [data-s]{transition:opacity .9s ease,transform .9s ease,background-color .9s ease,color .9s ease}
@@ -501,7 +580,7 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
   <div class="wrap"><div class="in nav-in">
     <a class="brand" href="#top" aria-label="EqualDocs home"><img src="data:image/png;base64,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" alt="">EqualDocs</a>
     <nav class="nav-links" aria-label="Main">
-      <a href="#ask">Product</a><a href="#how">Solutions</a><a href="#pricing">Pricing</a>
+      <a href="#firewall">Legal Firewall</a><a href="#service">How it works</a><a href="#use-cases">Use cases</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
     </nav>
     <div class="nav-right">
       <span class="hide-m mono">EN</span>
@@ -648,113 +727,174 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
     <p class="fine">No account needed to try. Free preview. General information, not legal advice. Using the software does not by itself create a lawyer-client relationship.</p>
   </div></div>
 </section>
-<!-- OTHER FEATURES -->
-<section class="band" id="product">
+<!-- FIREWALL (unique advantage) -->
+<section class="band" id="firewall">
   <div class="wrap"><div class="in sec">
-    <div class="sec-head">
-      <h2 class="h2">What your business can do <span class="dim">with EqualDocs today.</span></h2>
-      <p class="lede">Concrete legal tasks, each with a clear result. Start with AI, and bring in a licensed lawyer when the work needs professional judgment.</p>
+    <div class="lf-head">
+      <h2 class="h2">Most AI answers questions. <span class="dim">Legal Firewall™ checks the rules.</span></h2>
+      <p class="lede">Legal Firewall is the framework behind every EqualDocs review. Each document is checked against a Legal Pack: the rules for its document type and jurisdiction. So every result shows what was found, the rule behind it, and what was not checked.</p>
     </div>
-    <div class="bento">
-      <article class="card">
-        <span class="k">Drafting</span>
-        <h3 class="h3">Draft a contract</h3>
-        <p>Describe what you need. EqualDocs writes the document from your facts and leaves clear blanks for anything still missing.</p>
-        <div class="mock"><div class="mock-inner mk" data-anim="draft">
-          <div style="font-weight:500">Mutual Non-Disclosure Agreement</div>
-          <p class="doc-p" data-s>This Agreement is made on <span class="blank" data-s>[effective date]</span> between <span class="blank" data-s>[Company A]</span> and Northwind Labs Inc. Confidential Information will be protected for <span class="blank" data-s>[term]</span> years…</p>
-        </div></div>
+
+    <div class="lf-layers">
+      <article class="lf-layer">
+        <span class="lf-n">1</span>
+        <h3 class="h3">Legal Packs set the rules</h3>
+        <p>Rules written for a specific document type and jurisdiction. Rules still in draft are marked as pending lawyer review.</p>
+        <div class="lf-viz">
+          <div class="lf-pack"><b>Contractor agreement</b><span>Québec</span></div>
+          <div class="lf-pack"><b>Non-disclosure agreement</b><span>Québec</span></div>
+          <div class="lf-pack"><b>Services agreement</b><span>Québec</span></div>
+        </div>
       </article>
-      <article class="card">
-        <span class="k">Review</span>
-        <h3 class="h3">Review a contract</h3>
-        <p>Upload a contract and get a clause-by-clause risk report: what each risk is, how serious it is and what to change.</p>
-        <div class="mock"><div class="mock-inner mk" data-anim="review">
-          <div style="display:flex;justify-content:space-between;font-weight:500"><span>Service_Agreement.pdf</span><span class="mono">14 clauses</span></div>
-          <div class="risk-row" data-s><span>§ 7 Limitation of liability</span><span class="sev h" data-s>High</span></div>
-          <div class="risk-row" data-s><span>§ 11 Auto-renewal</span><span class="sev m" data-s>Medium</span></div>
-          <div class="risk-row" data-s><span>§ 3 Payment terms</span><span class="sev l" data-s>Low</span></div>
-        </div></div>
+      <article class="lf-layer">
+        <span class="lf-n">2</span>
+        <h3 class="h3">Checks sit beside the text</h3>
+        <p>Each finding appears next to the passage it concerns, with the rule behind it, and every result states what was checked and what was not.</p>
+        <div class="lf-viz">
+          <p class="lf-pass">The Contractor shall work <mark>exclusively for the Company</mark> during the Term.</p>
+          <div class="lf-find"><span class="sev h">High</span><span>Rule: contractor independence</span></div>
+          <div class="lf-scope"><span><b>Checked</b> 3 rules</span><span><b>Not checked</b> outside this pack</span></div>
+        </div>
       </article>
-      <article class="card">
-        <span class="k">Questions</span>
-        <h3 class="h3">Ask a legal question</h3>
-        <p>Ask in plain language and get a structured answer. When the question needs professional judgment, ask to be matched with a licensed lawyer where available, free on every plan.</p>
-        <div class="mock"><div class="mock-inner mk" data-anim="ask">
-          <div class="bubble me" data-s>Can my employer change my contract mid-year?</div>
-          <div class="ans"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="bubble ai" data-s>It depends on consent and your jurisdiction. Here is what to check first…</div></div>
-          <a class="link" href="#ask" data-s style="display:inline-block;margin-top:6px;font-size:13px">Ask your own question →</a>
-        </div></div>
+      <article class="lf-layer">
+        <span class="lf-n">3</span>
+        <h3 class="h3">Every finding has a next step</h3>
+        <p>Apply a proposed fix, send a review package to a lawyer, and have documents checked again whenever a Legal Pack is updated.</p>
+        <div class="lf-viz lf-acts">
+          <span class="lf-a pr">Apply fix</span>
+          <span class="lf-a">Send to lawyer</span>
+          <span class="lf-a ok">↻ Re-checked after pack update</span>
+        </div>
       </article>
-      <article class="card">
-        <span class="k">E-signature</span>
-        <h3 class="h3">Send for signature</h3>
-        <p>Send a document for e-signature, see who has signed, and keep the signed PDF with its completion certificate.</p>
-        <div class="mock"><div class="mock-inner mk" data-anim="sign">
-          <div class="signer"><span class="av">ML</span><span class="n">Maya Lin</span><span class="st ok" data-sig>✓ Signed</span></div>
-          <div class="signer"><span class="av">JD</span><span class="n">Jan Dolski</span><span class="st ok" data-sig>✓ Signed</span></div>
-          <div class="signer"><span class="av">PR</span><span class="n">Priya Raghavan</span><span class="st wait">Waiting</span></div>
-          <div class="risk-row" style="border-top:1px solid var(--line);margin-top:4px"><span>Signed PDF + completion certificate</span><span class="mono" data-count>2 of 3</span></div>
-        </div></div>
-      </article>
+    </div>
+
+    <div class="lf-compare" role="table" aria-label="How Legal Firewall compares with a general AI answer">
+      <div class="lf-row lf-th" role="row"><span role="columnheader"></span><span role="columnheader">A general AI answer</span><span role="columnheader">Legal Firewall</span></div>
+      <div class="lf-row" role="row"><span role="rowheader">Starts from</span><span role="cell">The question you remember to ask</span><span role="cell">A Legal Pack for the document's type and jurisdiction</span></div>
+      <div class="lf-row" role="row"><span role="rowheader">Shows</span><span role="cell">A summary</span><span role="cell">Each finding beside its passage, with the rule behind it</span></div>
+      <div class="lf-row" role="row"><span role="rowheader">Scope</span><span role="cell">Rarely says what it skipped</span><span role="cell">Every result says what was checked and what was not</span></div>
+      <div class="lf-row" role="row"><span role="rowheader">Over time</span><span role="cell">A one-off answer</span><span role="cell">Documents checked again when a Legal Pack is updated</span></div>
+      <div class="lf-row" role="row"><span role="rowheader">When judgment is needed</span><span role="cell">Start over with a lawyer</span><span role="cell">A review package for a lawyer, with the document and the findings</span></div>
     </div>
   </div></div>
 </section>
 
-<!-- MODEL -->
-<section class="band alt" id="model">
+<!-- SERVICE (end-to-end, Mercury-style) -->
+<section class="band alt" id="service">
   <div class="wrap"><div class="in sec">
-    <div class="sec-head">
-      <h2 class="h2">AI executes. <span class="dim">Lawyers judge.</span></h2>
-      <p class="lede">Built for growing businesses with recurring legal needs, EqualDocs brings AI execution and professional legal judgment into one experience, so you can start with the business problem, not with figuring out what kind of lawyer you need.</p>
-    </div>
-    <div class="model">
-      <article class="card">
-        <span class="chip indigo" style="align-self:flex-start">AI</span>
-        <h3 class="h3">Routine legal work at software economics.</h3>
-        <ul class="cols"><li>Ask questions</li><li>Draft documents</li><li>Review contracts</li><li>Compare versions</li><li>Analyze issues</li><li>Execute routine workflows</li></ul>
-        <p>AI handles what software can handle.</p>
-        <div class="btn-row" style="margin-top:auto"><a class="btn btn-primary" href="#pricing">Free trial</a></div>
-      </article>
-      <div class="router">
-        <span class="mono" style="text-transform:uppercase;letter-spacing:.08em">Routing layer</span>
-        <span class="q">Does this require professional legal judgment?</span>
-        <div class="path"><span>NO → AI</span><span class="y">YES → AI + LAWYER</span></div>
+    <div class="svc">
+      <div class="svc-l">
+        <h2 class="h2">From first question to signed contract. <span class="dim">In one place.</span></h2>
+        <p class="lede">Legal Firewall sits at the centre of an end-to-end service. AI handles routine work, and licensed lawyers step in when professional judgment is required.</p>
+        <ol class="svc-steps" id="svcSteps">
+          <li class="on"><button type="button" aria-controls="sv0" aria-expanded="true"><b>Ask</b><span>Ask in plain language and get a structured answer, with no account needed to try.</span></button><i class="svc-bar"></i></li>
+          <li><button type="button" aria-controls="sv1" aria-expanded="false"><b>Draft</b><span>Describe what you need. EqualDocs writes the document from your facts and leaves clear blanks for anything still missing.</span></button><i class="svc-bar"></i></li>
+          <li><button type="button" aria-controls="sv2" aria-expanded="false"><b>Check with Legal Firewall</b><span>Each document is checked against the Legal Pack for its type and jurisdiction, with findings beside the text.</span></button><i class="svc-bar"></i></li>
+          <li><button type="button" aria-controls="sv3" aria-expanded="false"><b>Bring in a lawyer</b><span>When it needs professional judgment, a licensed lawyer quotes in writing before any work starts. Nothing is billed until you approve.</span></button><i class="svc-bar"></i></li>
+          <li><button type="button" aria-controls="sv4" aria-expanded="false"><b>Sign</b><span>Send for e-signature, see who has signed, and keep the signed PDF with its completion certificate.</span></button><i class="svc-bar"></i></li>
+          <li><button type="button" aria-controls="sv5" aria-expanded="false"><b>Stay checked</b><span>Documents are checked again when a Legal Pack is updated, so a contract signed last year is not left behind.</span></button><i class="svc-bar"></i></li>
+        </ol>
+        <a class="btn btn-primary" href="#ask" style="margin-top:28px">Free trial</a>
       </div>
-      <article class="card">
-        <span class="chip indigo" style="align-self:flex-start">AI + Lawyer</span>
-        <h3 class="h3">Professional judgment when it matters.</h3>
-        <ul class="cols"><li>Legal advice</li><li>Complex matters</li><li>Negotiation</li><li>Professional review</li><li>Regulated work</li><li>Professional sign-off</li></ul>
-        <p>Your lawyer or appropriately licensed counsel.</p>
-        <div class="btn-row" style="margin-top:auto"><a class="btn btn-ghost" href="#cta">Get legal support</a></div>
-      </article>
+
+      <div class="svc-r">
+        <div class="svc-panel">
+          <div class="svc-shot on" id="sv0"><div class="mock-inner mk" data-anim="ask">
+            <div class="shot-h"><b>Ask</b><span class="chip">Private session</span></div>
+            <div class="bubble me" data-s>Can my employer change my contract mid-year?</div>
+            <div class="ans"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="bubble ai" data-s>It depends on consent and your jurisdiction. Here is what to check first: the change clause, notice periods, and whether you agreed in writing.</div></div>
+            <span class="link" data-s style="display:inline-block;margin-top:8px;font-size:13px">Match me with a lawyer →</span>
+          </div></div>
+
+          <div class="svc-shot" id="sv1"><div class="mock-inner mk" data-anim="draft">
+            <div class="shot-h"><b>Mutual Non-Disclosure Agreement</b><span class="chip">Draft</span></div>
+            <p class="doc-p" data-s>This Agreement is made on <span class="blank" data-s>[effective date]</span> between <span class="blank" data-s>[Company A]</span> and Northwind Labs Inc. Confidential Information will be protected for <span class="blank" data-s>[term]</span> years from the date of disclosure.</p>
+            <div class="doc-ln"></div><div class="doc-ln" style="width:84%"></div><div class="doc-ln" style="width:66%"></div>
+          </div></div>
+
+          <div class="svc-shot" id="sv2"><div class="mock-inner mk" data-anim="review">
+            <div class="shot-h"><b>Contractor_Agreement.docx</b><span class="chip indigo">Legal Pack · Contractor · Québec</span></div>
+            <div class="risk-row" data-s><span>4.1 Exclusivity</span><span class="sev h" data-s>High</span></div>
+            <div class="risk-row" data-s><span>6.2 Payment terms</span><span class="sev m" data-s>Medium</span></div>
+            <div class="risk-row" data-s><span>9.0 Governing law</span><span class="sev l" data-s>Passed</span></div>
+            <div class="shot-f">Checked: 3 rules in this Legal Pack · Not checked: anything outside it</div>
+          </div></div>
+
+          <div class="svc-shot" id="sv3"><div class="mock-inner mk" data-anim="flip">
+            <div class="shot-h"><b>Review package</b><span class="chip">Contractor_Agreement.docx + 2 findings</span></div>
+            <div class="risk-row"><span>Sent to EqualDocs Counsel</span><span class="st" data-flip data-from="Sending…" data-to="✓ Sent">✓ Sent</span></div>
+            <div class="risk-row"><span>Written quote</span><span class="st" data-flip data-from="Waiting" data-to="✓ Received">✓ Received</span></div>
+            <div class="risk-row"><span>Your approval</span><span class="st" data-flip data-from="Waiting" data-to="✓ Approved">✓ Approved</span></div>
+            <div class="shot-f">Nothing is billed until you approve.</div>
+          </div></div>
+
+          <div class="svc-shot" id="sv4"><div class="mock-inner mk" data-anim="sign">
+            <div class="shot-h"><b>Contractor_Agreement.pdf</b><span class="chip">E-signature</span></div>
+            <div class="signer"><span class="av">ML</span><span class="n">Maya Lin</span><span class="st ok" data-sig>✓ Signed</span></div>
+            <div class="signer"><span class="av">JD</span><span class="n">Jan Dolski</span><span class="st ok" data-sig>✓ Signed</span></div>
+            <div class="signer"><span class="av">PR</span><span class="n">Priya Raghavan</span><span class="st wait">Waiting</span></div>
+            <div class="risk-row" style="border-top:1px solid var(--line);margin-top:4px"><span>Signed PDF + completion certificate</span><span class="st" data-count>2 of 3</span></div>
+          </div></div>
+
+          <div class="svc-shot" id="sv5"><div class="mock-inner mk" data-anim="flip">
+            <div class="shot-h"><b>Legal Pack updated</b><span class="chip indigo">Contractor · Québec</span></div>
+            <div class="risk-row"><span>Contractor_Agreement.docx</span><span class="st" data-flip data-from="Checking…" data-to="✓ No new findings">✓ No new findings</span></div>
+            <div class="risk-row"><span>Contractor_A_Moreau.docx</span><span class="st warn" data-flip data-from="Checking…" data-to="1 new finding">1 new finding</span></div>
+            <div class="risk-row"><span>Contractor_L_Chen.docx</span><span class="st" data-flip data-from="Checking…" data-to="✓ No new findings">✓ No new findings</span></div>
+            <div class="shot-f">Monitoring that starts from business changes, like a new hire, is in development.</div>
+          </div></div>
+        </div>
+      </div>
     </div>
-    <p class="fine">Professional legal services are subject to applicable engagement terms, conflict clearance and professional requirements. Legal fees are separate from EqualDocs software subscriptions unless expressly stated otherwise.</p>
-    <p class="pull">Don't pay lawyer rates for every routine task. <span class="dim">Don't rely on AI when professional judgment matters.</span></p>
   </div></div>
 </section>
 
-<!-- HOW -->
-<section class="band" id="how">
+<!-- USE CASES -->
+<section class="band" id="use-cases">
   <div class="wrap"><div class="in sec">
-    <div class="sec-head">
-      <h2 class="h2">From business activity <span class="dim">to legal action.</span></h2>
-      <p class="lede">Businesses don't start with legal matters. They start with business events.</p>
+    <div class="lf-head">
+      <h2 class="h2">Built for small and medium businesses <span class="dim">with contracts to keep track of.</span></h2>
     </div>
-    <div class="pipe" tabindex="0" aria-label="Workflow from business event to outcome">
-      <div class="pipe-row">
-        <div class="node"><div class="tag"><span>Business event</span></div><div class="events"><span>New hire</span><span>Contract</span><span>Expansion</span><span>Compliance issue</span><span>Dispute</span><span>Business change</span></div></div>
-        <div class="h-wire"></div>
-        <div class="node"><div class="tag"><span>Determine legal impact</span></div><div class="t">What changed legally?</div></div>
-        <div class="h-wire"></div>
-        <div class="node on"><div class="tag"><span>Triage</span></div><div class="split"><span class="sel">AI</span><span>AI + Lawyer</span></div></div>
-        <div class="h-wire"></div>
-        <div class="node"><div class="tag"><span>Execute</span></div><div class="t">Draft · Review · Act · Escalate</div></div>
-        <div class="h-wire"></div>
-        <div class="node done"><div class="tag"><span>Outcome</span><span>✓</span></div><div class="t">Matter completed</div></div>
-      </div>
+    <div class="uc">
+      <article class="uc-card">
+        <h3 class="h3">Property and real estate managers</h3>
+        <p>You manage leases and service contracts across several properties, each with its own renewal dates and obligations.</p>
+        <div class="uc-chips"><span class="chip">Leases</span><span class="chip">Vendor and maintenance contracts</span><span class="chip">Service agreements</span><span class="chip">NDAs</span></div>
+        <ul class="ticks">
+          <li>Upload a folder for each property and have every contract filed into a project</li>
+          <li>Check each one against the Legal Pack for its type and jurisdiction</li>
+          <li>Spot terms like auto-renewal or liability limits before you sign</li>
+          <li>Send for signature and keep every signed PDF in one place</li>
+        </ul>
+        <div class="uc-shot">
+          <div class="uc-r uc-hd"><span>Property</span><span>Contracts</span><span>Status</span></div>
+          <div class="uc-r"><span>128 King Street</span><span>14</span><span class="st warn">2 findings</span></div>
+          <div class="uc-r"><span>Riverside Lofts</span><span>9</span><span class="st ok">Clear</span></div>
+          <div class="uc-r"><span>Harbour Plaza</span><span>21</span><span class="st warn">1 finding</span></div>
+        </div>
+      </article>
+      <article class="uc-card">
+        <h3 class="h3">HR and People teams</h3>
+        <p>You hire employees and contractors, and every agreement needs to hold up, from the offer letter to the last day.</p>
+        <div class="uc-chips"><span class="chip">Employment contracts</span><span class="chip">Contractor agreements</span><span class="chip">Offer letters</span><span class="chip">NDAs</span></div>
+        <ul class="ticks">
+          <li>Draft employment and contractor agreements from your facts</li>
+          <li>Flag contractor terms that can point to employment, like exclusivity</li>
+          <li>Bring in a licensed lawyer with a written quote before work starts</li>
+          <li>Keep agreements checked again whenever a Legal Pack is updated</li>
+        </ul>
+        <div class="uc-shot">
+          <div class="uc-r uc-hd"><span>Person</span><span>Type</span><span>Status</span></div>
+          <div class="uc-r"><span>A. Moreau</span><span>Contractor</span><span class="st warn">1 finding</span></div>
+          <div class="uc-r"><span>J. Patel</span><span>Employee</span><span class="st ok">✓ Signed</span></div>
+          <div class="uc-r"><span>L. Chen</span><span>Contractor</span><span class="st wait">Waiting for signature</span></div>
+        </div>
+      </article>
     </div>
-    <p class="pipe-cap">The first place a business turns, before it even knows whether it needs a lawyer.</p>
+    <div class="uc-foot">
+      <p>Also used by growing and cross-border businesses that don't have a full in-house legal team.</p>
+      <a class="btn btn-primary" href="#ask">Free trial</a>
+    </div>
   </div></div>
 </section>
 
@@ -775,7 +915,7 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
         <div class="tier"><span class="nm">PRO</span><span class="ds">Everyday legal work</span><a class="link" href="#pricing">Details →</a></div>
         <div class="tier"><span class="nm">BUSINESS</span><span class="ds">More AI work for one user</span><a class="link" href="#pricing">Details →</a></div>
         <div class="tier"><span class="nm">TEAM</span><span class="ds">A shared workspace for your team</span><a class="link" href="#pricing">Details →</a></div>
-        <div class="tier"><span class="nm">ENTERPRISE</span><span class="ds">Compliance checks and dedicated legal support</span><a class="link" href="#cta">Talk to Sales →</a></div>
+        <div class="tier"><span class="nm">ENTERPRISE</span><span class="ds">Compliance checks and dedicated legal support</span><a class="link" href="#ask">Talk to Sales →</a></div>
       </div>
     </div>
     <div class="price-foot">
@@ -785,25 +925,9 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
   </div></div>
 </section>
 
-<!-- NEXT -->
-<section class="band" id="next">
-  <div class="wrap"><div class="in sec">
-    <div class="sec-head-l">
-      <h2 class="h2">What we're building next</h2>
-      <p class="lede">Not available yet. Each item shows where it stands, and you can tell us if your team needs it.</p>
-    </div>
-    <div class="road">
-      <article class="card"><span class="chip dev" style="align-self:flex-start"><span class="dot"></span>In development</span><h3 class="h3">Continuous legal monitoring</h3><p>Legal Firewall checks that start from everyday business changes, such as a hire, a new policy or a company change, not only from a document you upload.</p><div class="acts"><a class="link" href="#next">Details →</a><a class="link" href="#cta">Tell us what you need →</a></div></article>
-      <article class="card"><span class="chip dev" style="align-self:flex-start"><span class="dot"></span>In development</span><h3 class="h3">Company Legal Context</h3><p>Your company's legal context carried from one matter to the next, so new work does not start from zero.</p><div class="acts"><a class="link" href="#next">Details →</a><a class="link" href="#cta">Tell us what you need →</a></div></article>
-      <article class="card"><span class="chip dev" style="align-self:flex-start"><span class="dot"></span>In development</span><h3 class="h3">Connect your tools</h3><p>EqualDocs inside ChatGPT and Claude through MCP and API. Email, Slack, Teams and HRIS connections are being explored.</p><div class="acts"><a class="link" href="#next">Details →</a><a class="link" href="#cta">Tell us what you need →</a></div></article>
-    </div>
-    <p style="margin:24px 0 0"><a class="link" href="#next">See everything we're working on →</a></p>
-  </div></div>
-</section>
-
 <!-- FAQ -->
-<section class="band alt" id="faq">
-  <div class="wrap"><div class="in sec">
+<section class="band" id="faq">
+  <div class="wrap"><div class="in sec" style="border-bottom:0">
     <div class="faq">
       <div style="display:grid;gap:18px;align-content:start">
         <h2 class="h2">Frequently asked <span class="dim">questions</span></h2>
@@ -823,16 +947,6 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
   </div></div>
 </section>
 
-<!-- CTA -->
-<section class="band" id="cta">
-  <div class="wrap"><div class="in sec" style="border-bottom:0">
-    <div class="cta">
-      <h2 class="h2">Start with the business problem. <span class="dim">We'll help determine what happens next.</span></h2>
-      <p class="lede">Routine legal work through AI. Professional judgment when it matters. One place to start.</p>
-      <div class="btn-row"><a class="btn btn-primary" href="#pricing">Free trial</a><a class="btn btn-ghost" href="#cta">Request a demo</a></div>
-    </div>
-  </div></div>
-</section>
 </main>
 
 <footer class="band" style="border-top:1px solid var(--line)">
@@ -844,9 +958,9 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
         <span class="mono">A new model for AI-native legal services.</span>
       </div>
       <div class="foot-cols">
-        <div><h5>Product</h5><a href="#product">Features</a><a href="#how">How it works</a><a href="#next">What's next</a><a href="#pricing">Pricing</a></div>
-        <div><h5>Solutions</h5><a href="#how">Canada</a><a href="#how">United States</a><a href="#how">Hospitality &amp; Tourism</a></div>
-        <div><h5>Company</h5><a href="#top">About</a><a href="#top">Blog</a><a href="#faq">Security</a><a href="#cta">Contact</a><a href="#top">Partners</a></div>
+        <div><h5>Product</h5><a href="#firewall">Legal Firewall</a><a href="#service">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></div>
+        <div><h5>Use cases</h5><a href="#use-cases">Property managers</a><a href="#use-cases">HR &amp; People teams</a><a href="#use-cases">Canada</a><a href="#use-cases">United States</a></div>
+        <div><h5>Company</h5><a href="#top">About</a><a href="#top">Blog</a><a href="#faq">Security</a><a href="#ask">Contact</a><a href="#top">Partners</a></div>
         <div><h5>Legal</h5><a href="#top">Terms</a><a href="#top">Privacy</a><a href="#top">Disclaimer</a></div>
       </div>
     </div>
@@ -942,6 +1056,7 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
       draft:function(m,at){var s=m.querySelectorAll('[data-s]');at(200,function(){s[0].classList.add('on')});[1,2,3].forEach(function(k,i){at(1300+i*900,function(){s[k].classList.add('on')})})},
       review:function(m,at){var r=m.querySelectorAll('.risk-row[data-s]');r.forEach(function(row,i){at(300+i*900,function(){row.classList.add('on')});at(800+i*900,function(){row.querySelector('.sev').classList.add('on')})})},
       ask:function(m,at){var s=m.querySelectorAll('[data-s]'),t=m.querySelector('.typing');at(300,function(){s[0].classList.add('on')});at(1300,function(){t.classList.add('on')});at(3100,function(){t.classList.remove('on');s[1].classList.add('on')});at(4100,function(){s[2].classList.add('on')})},
+      flip:function(m,at){m.querySelectorAll('[data-flip]').forEach(function(e,i){at(700+i*1100,function(){e.textContent=e.dataset.to;e.classList.remove('pend')})})},
       sign:function(m,at){var g=m.querySelectorAll('[data-sig]'),c=m.querySelector('[data-count]');g.forEach(function(e,i){at(900+i*1400,function(){e.textContent='\u2713 Signed';e.classList.remove('pend');c.textContent=(i+1)+' of 3'})})}
     };
     function prep(m){
@@ -950,8 +1065,9 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
       var t=m.querySelector('.typing');if(t)t.classList.remove('on');
       m.querySelectorAll('[data-sig]').forEach(function(e){e.textContent='Waiting';e.classList.add('pend')});
       var c=m.querySelector('[data-count]');if(c)c.textContent='0 of 3';
+      m.querySelectorAll('[data-flip]').forEach(function(e){e.textContent=e.dataset.from;e.classList.add('pend')});
     }
-    var LEN={draft:3200,review:2800,ask:4200,sign:3800},HOLD=3500;
+    var LEN={draft:3200,review:2800,ask:4200,sign:3800,flip:3200},HOLD=3500;
     function run(m){
       var at=function(ms,f){m._t.push(setTimeout(f,ms))};
       seq[m.dataset.anim](m,at);
@@ -965,6 +1081,31 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
     })},{threshold:[0,1]});
     document.querySelectorAll('.mk').forEach(function(m){prep(m);io.observe(m)});
   }
+
+  // service: step list drives the snippet; auto-advances slowly while the section is on screen
+  (function(){
+    var items=[].slice.call(document.querySelectorAll('#svcSteps li')),shots=[].slice.call(document.querySelectorAll('.svc-shot'));
+    var cur=0,timer=null,visible=false,hover=false,DUR=7000;
+    function show(n){
+      cur=n;
+      items.forEach(function(li,k){var on=k===n;li.classList.toggle('on',on);li.querySelector('button').setAttribute('aria-expanded',on);li.querySelector('.svc-bar').classList.remove('run')});
+      shots.forEach(function(s,k){s.classList.toggle('on',k===n)});
+      schedule();
+    }
+    function schedule(){
+      clearTimeout(timer);
+      var bar=items[cur].querySelector('.svc-bar');bar.classList.remove('run');
+      if(reduce||!visible||hover)return;
+      void bar.offsetWidth;bar.style.setProperty('--svc-dur',DUR+'ms');bar.classList.add('run');
+      timer=setTimeout(function(){show((cur+1)%items.length)},DUR);
+    }
+    items.forEach(function(li,k){li.querySelector('button').addEventListener('click',function(){show(k)})});
+    var box=document.querySelector('.svc');
+    box.addEventListener('mouseenter',function(){hover=true;schedule()});
+    box.addEventListener('mouseleave',function(){hover=false;schedule()});
+    if('IntersectionObserver' in window){new IntersectionObserver(function(es){visible=es[0].isIntersecting;schedule()},{threshold:0.35}).observe(box)}
+    show(0);
+  })();
 
   // dot-matrix wordmark
   var c=$('wordmark');
