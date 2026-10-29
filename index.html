@@ -951,9 +951,16 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
       m.querySelectorAll('[data-sig]').forEach(function(e){e.textContent='Waiting';e.classList.add('pend')});
       var c=m.querySelector('[data-count]');if(c)c.textContent='0 of 3';
     }
+    var LEN={draft:3200,review:2800,ask:4200,sign:3800},HOLD=3500;
+    function run(m){
+      var at=function(ms,f){m._t.push(setTimeout(f,ms))};
+      seq[m.dataset.anim](m,at);
+      // hold the finished state, ease back to the start, then replay while still fully in view
+      at(LEN[m.dataset.anim]+HOLD,function(){if(!m._full)return;prep(m);m._done=true;m._t.push(setTimeout(function(){if(m._full)run(m);else m._done=false},1100))});
+    }
     var io=new IntersectionObserver(function(es){es.forEach(function(en){
-      var m=en.target;
-      if(en.intersectionRatio>=0.99&&!m._done){m._done=true;seq[m.dataset.anim](m,function(ms,f){m._t.push(setTimeout(f,ms))})}
+      var m=en.target;m._full=en.intersectionRatio>=0.99;
+      if(m._full&&!m._done){m._done=true;run(m)}
       else if(en.intersectionRatio===0&&m._done){prep(m)}
     })},{threshold:[0,1]});
     document.querySelectorAll('.mk').forEach(function(m){prep(m);io.observe(m)});
