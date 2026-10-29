@@ -236,7 +236,45 @@ a{color:inherit;text-decoration:none}
 .cycle b{font-weight:500;font-size:14px}
 .cycle span:last-child{font-size:12.5px;color:var(--ink-2)}
 
+/* ask / chat section */
+.ask-sec{background:linear-gradient(180deg,var(--surface),var(--bg) 85%)}
+.chatbox{max-width:780px;margin:0 auto;background:var(--card);border:1px solid var(--line-2);border-radius:20px;box-shadow:0 1px 2px rgba(24,24,34,.05),0 24px 56px -24px rgba(38,53,73,.28);overflow:hidden;transition:border-color .2s,box-shadow .2s}
+.chatbox:focus-within{border-color:var(--primary);box-shadow:0 0 0 4px var(--primary-subtle),0 24px 56px -24px rgba(38,53,73,.28)}
+.cb-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:11px 18px;border-bottom:1px solid var(--line);background:var(--surface);font-size:12.5px;color:var(--ink-2)}
+.cb-priv{display:flex;align-items:center;gap:8px}
+.cb-priv b{font-weight:500;color:var(--ink)}
+.lock{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:#fff}
+.cb-enc{font-family:var(--font-mono);font-size:11px;color:var(--ok);display:flex;align-items:center;gap:6px}
+.cb-enc::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ok)}
+.cb-field{position:relative}
+.cb-field textarea{display:block;width:100%;min-height:132px;resize:none;border:0;outline:none;background:transparent;padding:22px 22px 10px;font:inherit;font-size:clamp(17px,2vw,20px);line-height:1.45;letter-spacing:-.01em;color:var(--ink)}
+.ph-anim{position:absolute;inset:0;padding:22px 22px 10px;font-size:clamp(17px,2vw,20px);line-height:1.45;letter-spacing:-.01em;color:var(--muted);pointer-events:none}
+.ph-anim.off{display:none}
+.caret{display:inline-block;width:2px;height:1.1em;margin-left:2px;vertical-align:-.18em;background:var(--primary);animation:caret 1s steps(1) infinite}
+.paused .caret{display:none}
+@keyframes caret{50%{opacity:0}}
+.cb-bot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 14px 14px 16px}
+.cb-tools{display:flex;gap:6px;flex-wrap:wrap}
+.tool{display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:13px;color:var(--ink-2);background:var(--card);border:1px solid var(--line-2);border-radius:999px;padding:6px 12px;cursor:pointer;transition:all .2s}
+.tool:hover{border-color:var(--ink-2)}
+.tool .mono{font-size:10.5px}
+.tool[aria-pressed="true"]{color:var(--primary-deep);border-color:var(--primary-tint);background:var(--primary-subtle)}
+.cb-cta{height:44px;padding:0 20px;font-size:15px}
+.cb-note{font-size:13px;color:var(--primary-deep);padding:0 18px;max-height:0;overflow:hidden;transition:max-height .3s,padding .3s}
+.cb-note.show{max-height:60px;padding:0 18px 14px}
+.try{max-width:780px;margin:16px auto 0;display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center}
+.tq{font:inherit;font-size:13px;color:var(--ink-2);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer}
+.tq:hover{border-color:var(--primary-tint);background:var(--primary-subtle);color:var(--primary-deep)}
+.assure{list-style:none;padding:0;margin:48px auto 0;max-width:980px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media (max-width:760px){.assure{grid-template-columns:1fr;gap:16px}.cb-cta{width:100%}}
+.assure li{display:flex;gap:12px;align-items:flex-start}
+.ai{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex:0 0 auto;background:var(--primary-subtle);color:var(--primary-deep);border:1px solid var(--primary-tint)}
+.assure b{display:block;font-weight:500;font-size:15px}
+.assure span:not(.ai){font-size:13.5px;color:var(--ink-2)}
 /* bento */
+.bubble{padding:8px 11px;border-radius:10px;max-width:88%;margin:6px 0}
+.bubble.me{background:var(--primary);color:var(--on-primary);margin-left:auto;border-bottom-right-radius:3px}
+.bubble.ai{background:var(--surface);border:1px solid var(--line);color:var(--ink-2);border-bottom-left-radius:3px}
 .bento{display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
 @media (max-width:760px){.bento{grid-template-columns:1fr}}
 .mock{margin-top:20px;flex:1;display:flex;align-items:flex-end;justify-content:center}
@@ -393,7 +431,7 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
   <div class="wrap"><div class="in nav-in">
     <a class="brand" href="#top" aria-label="EqualDocs home"><img src="data:image/png;base64,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" alt="">EqualDocs</a>
     <nav class="nav-links" aria-label="Main">
-      <a href="#firewall">Product</a><a href="#who">Solutions</a><a href="#how">Use cases</a><a href="#pricing">Pricing</a>
+      <a href="#ask">Product</a><a href="#who">Solutions</a><a href="#how">Use cases</a><a href="#pricing">Pricing</a>
     </nav>
     <div class="nav-right">
       <span class="hide-m mono">EN</span>
@@ -449,55 +487,52 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
     </div>
   </div></div>
 </section>
-<!-- LEGAL FIREWALL -->
-<section class="band alt" id="firewall">
+<!-- ASK (start today) -->
+<section class="band ask-sec" id="ask">
   <div class="wrap"><div class="in sec">
     <div class="sec-head">
-      <span class="mono" style="font-size:13px">Introducing Legal Firewall™</span>
-      <h2 class="h2">Check your contracts <span class="dim">before they become problems.</span></h2>
-      <p class="lede">Upload one contract, a ZIP file or a folder. EqualDocs checks each document against the Legal Pack for its type and jurisdiction, and shows what it found beside the text.</p>
+      <span class="mono" style="font-size:13px">Start today</span>
+      <h2 class="h2">Ask your legal question. <span class="dim">Privately.</span></h2>
+      <p class="lede">Ask in plain language and get a structured answer. When the question needs professional judgment, ask to be matched with a licensed lawyer where available, free on every plan.</p>
     </div>
-    <div class="fw-sec">
-      <article class="card">
-        <h3 class="h3">What you get</h3>
-        <ul class="ticks">
-          <li>Each finding beside the passage it concerns, with the rule behind it</li>
-          <li>A proposed fix you can review and apply</li>
-          <li>Documents checked again when a Legal Pack is updated</li>
-          <li>Bulk import from a ZIP file or a folder, filed into projects</li>
-          <li>A review package for a lawyer, with the document and the findings</li>
-        </ul>
-        <div style="margin-top:18px" class="small">Teams use it for</div>
-        <div class="uses"><span class="chip indigo">Workforce</span><span class="chip indigo">Contracts</span><span class="chip indigo">Business operations</span><span class="chip indigo">Compliance</span></div>
-        <div class="btn-row" style="margin-top:20px"><a class="btn btn-primary" href="#pricing">Free trial</a><a class="btn btn-ghost" href="#cta">Request a demo</a></div>
-      </article>
-      <article class="card">
-        <h3 class="h3">How a Legal Pack works</h3>
-        <p>Legal Packs cover specific document types and jurisdictions. Their rules are drafts pending lawyer review, and every result says what was checked and what was not.</p>
-        <div class="packcard" style="margin-top:10px">
-          <div class="hd"><b>Legal Pack · Contractor agreement · Québec</b><span class="chip dev"><span class="dot"></span>Draft, pending lawyer review</span></div>
-          <ul class="rules">
-            <li><span>Contractor independence</span><span class="mono">1 finding</span></li>
-            <li><span>Payment terms</span><span class="mono">1 finding</span></li>
-            <li><span>Governing law</span><span class="mono" style="color:var(--ok)">Passed</span></li>
-          </ul>
-          <div class="scope">
-            <div><b>Checked</b>Rules in this Legal Pack</div>
-            <div><b>Not checked</b>Anything outside the pack's type and jurisdiction</div>
-          </div>
+
+    <form class="chatbox" id="chatForm" autocomplete="off">
+      <div class="cb-top">
+        <span class="cb-priv">
+          <span class="lock" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="7" width="10" height="7" rx="1.6"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg></span>
+          <b>Private session</b>
+        </span>
+        <span class="cb-enc">Encrypted in transit and at rest</span>
+      </div>
+      <div class="cb-field">
+        <textarea id="chatInput" rows="3" aria-label="Your legal question" aria-describedby="chatHint"></textarea>
+        <div class="ph-anim" id="phAnim" aria-hidden="true"><span id="phText">Can I be held personally liable for my company's debts?</span><span class="caret"></span></div>
+      </div>
+      <div class="cb-bot">
+        <div class="cb-tools">
+          <button type="button" class="tool" id="tAttach"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 7.5 8 13a3.5 3.5 0 0 1-5-5l6-6a2.3 2.3 0 0 1 3.3 3.3L6.4 11.2a1.2 1.2 0 0 1-1.7-1.7L10 4.2"/></svg>Attach a contract <span class="mono">PDF · DOCX</span></button>
+          <button type="button" class="tool" id="tMatch" aria-pressed="false"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="5.5" r="2.5"/><path d="M3 14c.6-3 2.6-4.5 5-4.5s4.4 1.5 5 4.5"/></svg>Match me with a lawyer</button>
         </div>
-        <span class="mono" style="margin-top:6px">Example shown for illustration.</span>
-      </article>
+        <button class="btn btn-primary cb-cta" type="submit">Start today for free <span aria-hidden="true">→</span></button>
+      </div>
+      <div class="cb-note" id="chatNote" aria-live="polite"></div>
+    </form>
+
+    <div class="try" id="chatHint">
+      <span class="mono">Try</span>
+      <button type="button" class="tq">What is a force majeure clause?</button>
+      <button type="button" class="tq">When does a non-compete agreement become unenforceable?</button>
+      <button type="button" class="tq">How does a severability clause affect a contract?</button>
     </div>
-    <div class="cycle">
-      <div><span class="mono">Upload</span><b>One file or a folder</b><span>ZIP and folder import, filed into projects</span></div>
-      <div><span class="mono">Check</span><b>Against a Legal Pack</b><span>Matched to document type and jurisdiction</span></div>
-      <div><span class="mono">Fix</span><b>Review and apply</b><span>Proposed fixes beside each finding</span></div>
-      <div><span class="mono">Re-check</span><b>When packs update</b><span>Documents checked again automatically</span></div>
-    </div>
+
+    <ul class="assure">
+      <li><span class="ai"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="7" width="10" height="7" rx="1.6"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg></span><div><b>Private by design</b><span>Customer-specific legal data stays private, with per-client data isolation.</span></div></li>
+      <li><span class="ai"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.8 13.5 4v4c0 3.2-2.3 5.4-5.5 6.2C4.8 13.4 2.5 11.2 2.5 8V4z"/><path d="m5.6 8 1.7 1.7 3.2-3.4"/></svg></span><div><b>Not used to train our AI</b><span>By default your content is not used for training. Opting in is your choice.</span></div></li>
+      <li><span class="ai"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="5.5" cy="10.5" r="3"/><path d="m7.6 8.4 5.4-5.4M11 5l1.5 1.5"/></svg></span><div><b>You own your documents</b><span>You keep full ownership of your documents and their IP.</span></div></li>
+    </ul>
+    <p class="fine">No account needed to try. Free preview. General information, not legal advice. Using the software does not by itself create a lawyer-client relationship.</p>
   </div></div>
 </section>
-
 <!-- OTHER FEATURES -->
 <section class="band" id="product">
   <div class="wrap"><div class="in sec">
@@ -531,18 +566,11 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
         <span class="k">Questions</span>
         <h3 class="h3">Ask a legal question</h3>
         <p>Ask in plain language and get a structured answer. When the question needs professional judgment, ask to be matched with a licensed lawyer where available, free on every plan.</p>
-        <div class="mock"><form class="mock-inner" id="askForm" autocomplete="off">
-          <div style="font-weight:500;margin-bottom:8px">Have a legal question? Ask it now, no account needed.</div>
-          <label class="field"><input id="askInput" type="text" placeholder="Ask about contracts, hiring, liability…" aria-label="Your legal question"><button class="btn btn-primary" type="submit">Ask</button></label>
-          <div class="ask-tools"><button type="button" id="tWeb" aria-pressed="false">Web search</button><button type="button" id="tLawyer" aria-pressed="false">Match me with a lawyer</button></div>
-          <div class="qs"><span class="lbl">Common questions</span>
-            <button type="button" class="q">Can I be held personally liable for my company's debts?</button>
-            <button type="button" class="q">How does a severability clause affect a contract?</button>
-            <button type="button" class="q">What is a shareholders' agreement for?</button>
-          </div>
-          <div class="ask-note" id="askNote" aria-live="polite"></div>
-          <div class="ask-foot">Free preview. General information, not legal advice.</div>
-        </form></div>
+        <div class="mock"><div class="mock-inner">
+          <div class="bubble me">Can my employer change my contract mid-year?</div>
+          <div class="bubble ai">It depends on consent and your jurisdiction. Here is what to check first…</div>
+          <a class="link" href="#ask" style="display:inline-block;margin-top:6px;font-size:13px">Ask your own question →</a>
+        </div></div>
       </article>
       <article class="card">
         <span class="k">E-signature</span>
@@ -789,7 +817,7 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
         <span class="mono">A new model for AI-native legal services.</span>
       </div>
       <div class="foot-cols">
-        <div><h5>Product</h5><a href="#firewall">Features</a><a href="#how">How it works</a><a href="#next">What's next</a><a href="#pricing">Pricing</a></div>
+        <div><h5>Product</h5><a href="#product">Features</a><a href="#how">How it works</a><a href="#next">What's next</a><a href="#pricing">Pricing</a></div>
         <div><h5>Solutions</h5><a href="#who">Canada</a><a href="#who">United States</a><a href="#who">Hospitality &amp; Tourism</a></div>
         <div><h5>Company</h5><a href="#top">About</a><a href="#top">Blog</a><a href="#faq">Security</a><a href="#cta">Contact</a><a href="#top">Partners</a></div>
         <div><h5>Legal</h5><a href="#top">Terms</a><a href="#top">Privacy</a><a href="#top">Disclaimer</a></div>
@@ -850,12 +878,27 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
   window.addEventListener('resize',function(){var a=nodes.findIndex(function(e){return e.classList.contains('on')});if(a>-1)center(a)});
   show(2,true);
   if(!reduce){later(play,2500)}
-  // ask widget
-  var input=$('askInput'),note=$('askNote');
-  document.querySelectorAll('.qs .q').forEach(function(b){b.addEventListener('click',function(){input.value=b.textContent;input.focus();note.textContent=''})});
-  ['tWeb','tLawyer'].forEach(function(id){var b=$(id);b.addEventListener('click',function(){b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true')})});
-  $('askForm').addEventListener('submit',function(e){e.preventDefault();note.textContent=input.value.trim()?'Prototype only. In the live product this opens a free AI answer.':'Type a question or pick one below.'});
-
+  // chat: typing / deleting placeholder examples
+  var ta=$('chatInput'),ph=$('phAnim'),pt=$('phText'),cn=$('chatNote');
+  var EX=["Can I be held personally liable for my company's debts?","When does a non-compete agreement become unenforceable?","What should I check before signing a commercial lease?","How does a severability clause affect a contract?","Can my employer change my contract without my consent?","What does “without prejudice” mean in legal correspondence?","What is a shareholders' agreement for?"];
+  var ei=0,ci=EX[0].length,dir=-1,tt=null,paused=false;
+  function tick(){
+    if(paused)return;
+    var w=EX[ei],delay;
+    if(dir>0){ci++;pt.textContent=w.slice(0,ci);delay=ci>=w.length?(dir=-1,1900):38+Math.random()*40}
+    else{ci--;pt.textContent=w.slice(0,Math.max(ci,0));delay=ci<=0?(dir=1,ei=(ei+1)%EX.length,ci=0,380):18}
+    tt=setTimeout(tick,delay);
+  }
+  function syncPh(){ph.classList.toggle('off',ta.value.length>0)}
+  ta.addEventListener('focus',function(){paused=true;clearTimeout(tt);ph.classList.add('paused');pt.textContent=EX[ei]});
+  ta.addEventListener('blur',function(){if(!ta.value&&!reduce){paused=false;ph.classList.remove('paused');tt=setTimeout(tick,600)}});
+  ta.addEventListener('input',function(){syncPh();cn.classList.remove('show')});
+  ta.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();$('chatForm').requestSubmit()}});
+  if(reduce){ph.classList.add('paused')}else{tt=setTimeout(tick,1800)}
+  document.querySelectorAll('.tq').forEach(function(b){b.addEventListener('click',function(){ta.value=b.textContent;syncPh();ta.focus()})});
+  $('tMatch').addEventListener('click',function(){var b=$('tMatch');b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true')});
+  $('tAttach').addEventListener('click',function(){cn.textContent='Prototype: in the live product you can attach a PDF or DOCX here.';cn.classList.add('show')});
+  $('chatForm').addEventListener('submit',function(e){e.preventDefault();cn.textContent=ta.value.trim()?'Prototype: in the live product this opens your free account and answers your question.':'Type your question, or pick one of the examples below.';cn.classList.add('show')});
   // dot-matrix wordmark
   var c=$('wordmark');
   function draw(){
