@@ -520,7 +520,11 @@ a{color:inherit;text-decoration:none}
 .ucx-dots button[aria-selected="true"] i::after{width:100%}
 .ucx-dots button.run i::after{width:0;animation:ucfill var(--uc-dur,7s) linear forwards}
 @keyframes ucfill{to{width:100%}}
-@media (min-width:960px){.sec-head .h2,.lf-head .h2,.svc-head .h2{width:66.667%;max-width:none}}
+@media (min-width:960px){.sec-head .h2,.lf-head .h2{width:66.667%;max-width:none}}
+/* How it works: title and body span the full content width */
+.svc-head .h2,.svc-head .lede{width:100%;max-width:none}
+.svc-head .h2{text-wrap:wrap}
+.svc-head .h2 .dim{display:block}
 /* bento */
 /* feature mockups: slow, one-time play when fully in view (only with JS + motion allowed) */
 .mk [data-s]{transition:opacity .9s ease,transform .9s ease,background-color .9s ease,color .9s ease}
