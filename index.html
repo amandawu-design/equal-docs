@@ -498,19 +498,19 @@ a{color:inherit;text-decoration:none}
 
 /* use cases: Mercury-style carousel */
 .lf-c{margin-inline:auto;text-align:center;justify-items:center}
-.ucx-track{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:2/1;background:#ECEEF4}
-@media (max-width:760px){.ucx-track{aspect-ratio:auto;min-height:620px}}
+.ucx-track{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:2.6/1;min-height:380px;background:#ECEEF4}
+@media (max-width:760px){.ucx-track{aspect-ratio:auto;min-height:640px}}
 .ucx-slide{position:absolute;inset:0;opacity:0;transition:opacity .4s ease;pointer-events:none}
 .ucx-slide.on{opacity:1;pointer-events:auto;transition:opacity .6s ease .35s}
 .ucx-slide.s1{background:radial-gradient(70% 90% at 78% 45%,#F7F6FC 0%,#E6E8F2 70%)}
 .ucx-slide.s2{background:radial-gradient(70% 90% at 78% 45%,#F5F4FF 0%,#E3E3F6 70%)}
 .ucx-slide.s3{background:radial-gradient(70% 90% at 78% 45%,#F8F6F1 0%,#E9E7E2 70%)}
-.ucx-art{position:absolute;top:0;right:0;bottom:0;width:58%}
+.ucx-art{position:absolute;top:0;right:0;bottom:0;width:56%}
 .ucx-art canvas{display:block;width:100%!important;height:100%!important}
-@media (max-width:760px){.ucx-art{left:0;width:auto;bottom:auto;height:50%}}
+@media (max-width:760px){.ucx-art{left:0;width:auto;bottom:auto;height:250px}}
 .ucx-tag{justify-self:start;margin-bottom:16px;padding:6px 12px;border-radius:8px;background:var(--ink);color:#fff!important;font-size:14px!important}
-.ucx-copy{position:absolute;left:clamp(18px,3.5vw,40px);top:50%;transform:translateY(-50%);right:clamp(18px,3.5vw,40px);z-index:2;max-width:520px;color:var(--ink);display:grid;gap:4px}
-@media (max-width:760px){.ucx-copy{top:auto;transform:none;bottom:clamp(20px,4vw,48px)}}
+.ucx-copy{position:absolute;left:clamp(18px,3.5vw,40px);top:50%;transform:translateY(-50%);right:clamp(18px,3.5vw,40px);z-index:2;max-width:min(520px,42%);color:var(--ink);display:grid;gap:4px}
+@media (max-width:760px){.ucx-copy{top:auto;transform:none;bottom:clamp(20px,4vw,48px);max-width:none}}
 .ucx-q{margin:0 0 18px;font-size:clamp(18px,2.1vw,26px);line-height:1.35;letter-spacing:-.01em;text-wrap:pretty}
 .ucx-copy b{font-weight:500;font-size:clamp(15px,1.4vw,18px)}
 .ucx-copy span{color:var(--ink-2);font-size:clamp(13px,1.2vw,16px)}
@@ -1371,7 +1371,7 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
       r.shadowMap.enabled=true;r.shadowMap.type=T.PCFSoftShadowMap;
       r.outputEncoding=T.sRGBEncoding;r.toneMapping=T.ACESFilmicToneMapping;r.toneMappingExposure=.95;
       el.appendChild(r.domElement);
-      var sc=new T.Scene(),cam=new T.PerspectiveCamera(28,1,.1,100);
+      var sc=new T.Scene(),cam=new T.PerspectiveCamera(18.5,1,.1,100);
       cam.position.set(8.4,6.4,10.4);cam.lookAt(0,1.45,0);
       sc.add(new T.HemisphereLight(0xffffff,lin(0xC8CCE2),.9));
       var key=new T.DirectionalLight(0xffffff,1.7);key.position.set(5,9,6);key.castShadow=true;
@@ -1390,8 +1390,9 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
         var doc=new T.Group();doc.add(shade(new T.Mesh(new T.BoxGeometry(1.25,.05,1.6),mat(C.white,{roughness:.5,clearcoat:.2}))));
         var seal=shade(new T.Mesh(new T.SphereGeometry(.17,48,48),mat(C.gold,{metalness:.35,roughness:.28})));seal.position.set(.35,.13,.45);doc.add(seal);
         [-.45,-.25,-.05].forEach(function(z,i){var l=new T.Mesh(new T.BoxGeometry(.8-i*.15,.012,.06),mat(C.lav,{clearcoat:0}));l.position.set(-.1+i*.07,.032,z);doc.add(l)});
-        doc.position.set(0,3.25,0);doc.rotation.set(.32,.4,.1);grp.add(doc);
-        s.tick=function(t){grp.rotation.y=t*.16;doc.position.y=3.25+Math.sin(t*1.3)*.14;doc.rotation.z=.1+Math.sin(t*.9)*.06};
+        doc.position.set(0,3.05,0);doc.rotation.set(.32,.4,.1);grp.add(doc);
+        s.cam.lookAt(0,1.8,0);
+        s.tick=function(t){grp.rotation.y=t*.16;doc.position.y=3.05+Math.sin(t*1.3)*.12;doc.rotation.z=.1+Math.sin(t*.9)*.06};
       },
       function(s){ // people: spheres orbiting a linking ring
         var grp=new T.Group();s.sc.add(grp);
@@ -1404,10 +1405,10 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
           orb.forEach(function(o,i){var a=t*o.sp+o.ph;o.m.position.set(Math.cos(a)*o.r,1.9+Math.sin(a*1.3+i)*.55,Math.sin(a)*o.r)});core.position.y=1.9+Math.sin(t*1.1)*.06};
       },
       function(s){ // growth: a spiral of discs stepping upward
-        var grp=new T.Group();grp.scale.setScalar(1.3);grp.position.y=-.2;s.sc.add(grp);var cols=[C.tint,C.tint,C.lav,C.lav,C.indigo,C.indigo,C.navy,C.navy,C.gold];
+        var grp=new T.Group();grp.scale.setScalar(1.12);grp.position.y=0;s.sc.add(grp);var cols=[C.tint,C.tint,C.lav,C.lav,C.indigo,C.indigo,C.navy,C.navy,C.gold];
         var discs=cols.map(function(c,i){var gold=i===cols.length-1;var m=shade(new T.Mesh(new T.CylinderGeometry(.55,.55,.2,96),mat(c,gold?{metalness:.4,roughness:.26}:null)));grp.add(m);return m});
         s.tick=function(t){discs.forEach(function(m,i){var a=i*.62+t*.25;m.position.set(Math.cos(a)*.85,.12+i*.3+Math.sin(t*1.8-i*.55)*.06,Math.sin(a)*.85);m.rotation.y=-a})};
-        s.cam.lookAt(0,1.35,0);
+        s.cam.lookAt(0,1.55,0);
       }
     ];
     function size(s){var w=s.el.clientWidth,h=s.el.clientHeight;if(!w||!h)return;if(w!==s.w||h!==s.h){s.w=w;s.h=h;s.r.setSize(w,h,false);s.cam.aspect=w/h;s.cam.updateProjectionMatrix()}}
