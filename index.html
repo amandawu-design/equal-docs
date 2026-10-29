@@ -326,6 +326,22 @@ a{color:inherit;text-decoration:none}
 .assure b{display:block;font-weight:500;font-size:15px}
 .assure span:not(.as-ic){font-size:13.5px;color:var(--ink-2)}
 /* bento */
+/* feature mockups: slow, one-time play when fully in view (only with JS + motion allowed) */
+.mk [data-s]{transition:opacity .9s ease,transform .9s ease,background-color .9s ease,color .9s ease}
+.anim .mk [data-s]{opacity:.28;transform:translateY(4px)}
+.anim .mk .blank[data-s]{opacity:1;transform:none;background:transparent;color:var(--muted)}
+.anim .mk .sev[data-s]{transform:scale(.92)}
+.anim .mk [data-s].on{opacity:1;transform:none}
+.anim .mk .blank[data-s].on{background:var(--primary-subtle);color:var(--primary-deep)}
+.ans{display:grid}
+.ans>*{grid-area:1/1}
+.typing{display:flex;align-self:start;opacity:0;transition:opacity .5s;gap:4px;padding:10px 12px;margin:6px 0;width:max-content;border-radius:10px;background:var(--surface);border:1px solid var(--line)}
+.typing i{width:5px;height:5px;border-radius:50%;background:var(--muted);animation:dot 1.4s ease-in-out infinite}
+.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+.typing.on{opacity:1}
+@keyframes dot{0%,60%,100%{opacity:.3;transform:none}30%{opacity:1;transform:translateY(-2px)}}
+.mk .st{transition:color .8s ease,opacity .8s ease}
+.anim .mk .st.pend{color:var(--muted)}
 .bubble{padding:8px 11px;border-radius:10px;max-width:88%;margin:6px 0}
 .bubble.me{background:var(--primary);color:var(--on-primary);margin-left:auto;border-bottom-right-radius:3px}
 .bubble.ai{background:var(--surface);border:1px solid var(--line);color:var(--ink-2);border-bottom-left-radius:3px}
@@ -646,41 +662,41 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
         <span class="k">Drafting</span>
         <h3 class="h3">Draft a contract</h3>
         <p>Describe what you need. EqualDocs writes the document from your facts and leaves clear blanks for anything still missing.</p>
-        <div class="mock"><div class="mock-inner">
+        <div class="mock"><div class="mock-inner mk" data-anim="draft">
           <div style="font-weight:500">Mutual Non-Disclosure Agreement</div>
-          <p class="doc-p">This Agreement is made on <span class="blank">[effective date]</span> between <span class="blank">[Company A]</span> and Northwind Labs Inc. Confidential Information will be protected for <span class="blank">[term]</span> years…</p>
+          <p class="doc-p" data-s>This Agreement is made on <span class="blank" data-s>[effective date]</span> between <span class="blank" data-s>[Company A]</span> and Northwind Labs Inc. Confidential Information will be protected for <span class="blank" data-s>[term]</span> years…</p>
         </div></div>
       </article>
       <article class="card">
         <span class="k">Review</span>
         <h3 class="h3">Review a contract</h3>
         <p>Upload a contract and get a clause-by-clause risk report: what each risk is, how serious it is and what to change.</p>
-        <div class="mock"><div class="mock-inner">
+        <div class="mock"><div class="mock-inner mk" data-anim="review">
           <div style="display:flex;justify-content:space-between;font-weight:500"><span>Service_Agreement.pdf</span><span class="mono">14 clauses</span></div>
-          <div class="risk-row"><span>§ 7 Limitation of liability</span><span class="sev h">High</span></div>
-          <div class="risk-row"><span>§ 11 Auto-renewal</span><span class="sev m">Medium</span></div>
-          <div class="risk-row"><span>§ 3 Payment terms</span><span class="sev l">Low</span></div>
+          <div class="risk-row" data-s><span>§ 7 Limitation of liability</span><span class="sev h" data-s>High</span></div>
+          <div class="risk-row" data-s><span>§ 11 Auto-renewal</span><span class="sev m" data-s>Medium</span></div>
+          <div class="risk-row" data-s><span>§ 3 Payment terms</span><span class="sev l" data-s>Low</span></div>
         </div></div>
       </article>
       <article class="card">
         <span class="k">Questions</span>
         <h3 class="h3">Ask a legal question</h3>
         <p>Ask in plain language and get a structured answer. When the question needs professional judgment, ask to be matched with a licensed lawyer where available, free on every plan.</p>
-        <div class="mock"><div class="mock-inner">
-          <div class="bubble me">Can my employer change my contract mid-year?</div>
-          <div class="bubble ai">It depends on consent and your jurisdiction. Here is what to check first…</div>
-          <a class="link" href="#ask" style="display:inline-block;margin-top:6px;font-size:13px">Ask your own question →</a>
+        <div class="mock"><div class="mock-inner mk" data-anim="ask">
+          <div class="bubble me" data-s>Can my employer change my contract mid-year?</div>
+          <div class="ans"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="bubble ai" data-s>It depends on consent and your jurisdiction. Here is what to check first…</div></div>
+          <a class="link" href="#ask" data-s style="display:inline-block;margin-top:6px;font-size:13px">Ask your own question →</a>
         </div></div>
       </article>
       <article class="card">
         <span class="k">E-signature</span>
         <h3 class="h3">Send for signature</h3>
         <p>Send a document for e-signature, see who has signed, and keep the signed PDF with its completion certificate.</p>
-        <div class="mock"><div class="mock-inner">
-          <div class="signer"><span class="av">ML</span><span class="n">Maya Lin</span><span class="st ok">✓ Signed</span></div>
-          <div class="signer"><span class="av">JD</span><span class="n">Jan Dolski</span><span class="st ok">✓ Signed</span></div>
+        <div class="mock"><div class="mock-inner mk" data-anim="sign">
+          <div class="signer"><span class="av">ML</span><span class="n">Maya Lin</span><span class="st ok" data-sig>✓ Signed</span></div>
+          <div class="signer"><span class="av">JD</span><span class="n">Jan Dolski</span><span class="st ok" data-sig>✓ Signed</span></div>
           <div class="signer"><span class="av">PR</span><span class="n">Priya Raghavan</span><span class="st wait">Waiting</span></div>
-          <div class="risk-row" style="border-top:1px solid var(--line);margin-top:4px"><span>Signed PDF + completion certificate</span><span class="mono">2 of 3</span></div>
+          <div class="risk-row" style="border-top:1px solid var(--line);margin-top:4px"><span>Signed PDF + completion certificate</span><span class="mono" data-count>2 of 3</span></div>
         </div></div>
       </article>
     </div>
@@ -1008,6 +1024,30 @@ details p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:68ch}
   $('tMatch').addEventListener('click',function(){var b=$('tMatch');b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true')});
   $('tAttach').addEventListener('click',function(){cn.textContent='Prototype: in the live product you can attach a PDF or DOCX here.';cn.classList.add('show')});
   $('chatForm').addEventListener('submit',function(e){e.preventDefault();cn.textContent=ta.value.trim()?'Prototype: in the live product this opens your free account and answers your question.':'Type your question, or pick one of the examples below.';cn.classList.add('show')});
+  // feature mockups: play slowly, once, when the mockup is fully in view
+  if(!reduce&&'IntersectionObserver' in window){
+    document.documentElement.classList.add('anim');
+    var seq={
+      draft:function(m,at){var s=m.querySelectorAll('[data-s]');at(200,function(){s[0].classList.add('on')});[1,2,3].forEach(function(k,i){at(1300+i*900,function(){s[k].classList.add('on')})})},
+      review:function(m,at){var r=m.querySelectorAll('.risk-row[data-s]');r.forEach(function(row,i){at(300+i*900,function(){row.classList.add('on')});at(800+i*900,function(){row.querySelector('.sev').classList.add('on')})})},
+      ask:function(m,at){var s=m.querySelectorAll('[data-s]'),t=m.querySelector('.typing');at(300,function(){s[0].classList.add('on')});at(1300,function(){t.classList.add('on')});at(3100,function(){t.classList.remove('on');s[1].classList.add('on')});at(4100,function(){s[2].classList.add('on')})},
+      sign:function(m,at){var g=m.querySelectorAll('[data-sig]'),c=m.querySelector('[data-count]');g.forEach(function(e,i){at(900+i*1400,function(){e.textContent='\u2713 Signed';e.classList.remove('pend');c.textContent=(i+1)+' of 3'})})}
+    };
+    function prep(m){
+      (m._t||[]).forEach(clearTimeout);m._t=[];m._done=false;
+      m.querySelectorAll('[data-s]').forEach(function(e){e.classList.remove('on')});
+      var t=m.querySelector('.typing');if(t)t.classList.remove('on');
+      m.querySelectorAll('[data-sig]').forEach(function(e){e.textContent='Waiting';e.classList.add('pend')});
+      var c=m.querySelector('[data-count]');if(c)c.textContent='0 of 3';
+    }
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){
+      var m=en.target;
+      if(en.intersectionRatio>=0.99&&!m._done){m._done=true;seq[m.dataset.anim](m,function(ms,f){m._t.push(setTimeout(f,ms))})}
+      else if(en.intersectionRatio===0&&m._done){prep(m)}
+    })},{threshold:[0,1]});
+    document.querySelectorAll('.mk').forEach(function(m){prep(m);io.observe(m)});
+  }
+
   // dot-matrix wordmark
   var c=$('wordmark');
   function draw(){
